@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Signup Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/signup/css/style.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+		.home-button {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.95em;
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+    }
+
+    .home-button:hover {
+        background-color: #76b8ff;
+    }
+    </style>
+
+<script>
+    function validateForm(event) {
+        const name = document.forms["signupForm"]["name"].value.trim();
+        const contact = document.forms["signupForm"]["contact"].value.trim();
+        const email = document.forms["signupForm"]["email"].value.trim();
+        const password = document.forms["signupForm"]["password"].value.trim();
+
+        let valid = true;
+
+        // Clear previous error messages
+        document.querySelectorAll(".error-message").forEach(el => el.innerText = "");
+
+        // Name: only letters and spaces
+        if (name === "") {
+            document.getElementById("nameError").innerText = "Name is required.";
+            valid = false;
+        } else if (!/^[A-Za-z\s]+$/.test(name)) {
+            document.getElementById("nameError").innerText = "Name should contain only letters.";
+            valid = false;
+        }
+
+        // Contact: 10-digit number
+        if (!/^\d{10}$/.test(contact)) {
+            document.getElementById("contactError").innerText = "Contact must be a 10-digit number.";
+            valid = false;
+        }
+
+        // Email: basic format check
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById("emailError").innerText = "Invalid email format.";
+            valid = false;
+        }
+
+        // Password: at least 6 characters, one letter and one number
+        if (password.length < 6) {
+            document.getElementById("passwordError").innerText = "Password must be at least 6 characters.";
+            valid = false;
+        } else if (!/(?=.*[a-zA-Z])(?=.*\d)/.test(password)) {
+            document.getElementById("passwordError").innerText = "Password must contain letters and numbers.";
+            valid = false;
+        }
+
+        // Stop form submission if any validation failed
+        if (!valid) {
+            event.preventDefault();
+        }
+
+        return valid;
+    }
+</script>
+
+</head>
+
+<body>
+    <section class="w3l-form-36">
+		<a href="{{ url_for('home') }}" class="home-button">Home</a>
+
+        <div class="form-36-mian section-gap">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Create your account</h3>
+                    <form name="signupForm" action="{{ url_for('userregistration') }}" method="POST" class="signin-form" onsubmit="return validateForm(event)">
+                        
+                        <div class="form-input">
+                            <span class="fa fa-user-o" aria-hidden="true"></span>
+                            <input type="text" name="name" placeholder="Full Name"/>
+                        </div>
+						 <div id="nameError" class="error-message"></div>
+
+                        <div class="form-input">
+                            <span class="fa fa-user-o" aria-hidden="true"></span>
+                            <input type="text" name="contact" placeholder="Contact" />
+                        </div>
+						<div id="contactError" class="error-message"></div>
+
+                        <div class="form-input">
+                            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                            <input type="text" name="email" placeholder="Email" />
+                            
+                        </div>
+						<div id="emailError" class="error-message"></div>
+
+                        <div class="form-input">
+                            <span class="fa fa-key" aria-hidden="true"></span>
+                            <input type="password" name="password" placeholder="Password" />
+                           
+                        </div>
+						 <div id="passwordError" class="error-message"></div>
+
+                        <div class="login-remember d-grid">
+                            <button class="btn theme-button" name="submit">Signup</button>
+                        </div>
+                    </form>
+
+                    <p class="signup">Already a member? <a href="{{ url_for('signin') }}" class="signuplink">SignIn</a></p>
+                </div>
+
+                <div class="copy-right">
+                    <p>© Signup Form. All rights reserved |</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

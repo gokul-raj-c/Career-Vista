@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Career-Vista-HomePage</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+<link href="{{ url_for('static', filename='assets/homepage/img/favicon.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='assets/homepage/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{{ url_for('static', filename='assets/homepage/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/homepage/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/homepage/vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/homepage/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/homepage/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+<!-- Main CSS File -->
+<link href="{{ url_for('static', filename='assets/homepage/css/main.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Impact
+  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header fixed-top">
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">Career-Vista</h1>
+          <span>.</span>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="{{ url_for('signin') }}">Sign-In</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign-Up</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section accent-background">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-5 justify-content-between">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h2><span>Welcome to </span><span class="accent">Career-Vista</span></h2>
+            <div class="d-flex">
+              </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2">
+           <img src="{{ url_for('static', filename='assets/homepage/img/hero-img.svg') }}" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+      
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Us<br></h2>
+        <p>CareerVista is an intelligent career guidance system built to empower students in making data-driven decisions about their academic and professional futures. Our platform leverages cutting-edge technologies in Artificial Intelligence and Machine Learning to provide personalized recommendations based on students' academic performance, skills, and interests.</p>
+      </div><!-- End Section Title -->
+
+    </section><!-- /About Section -->
+
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+
+          <div class="col-lg-5">
+           <img src="{{ url_for('static', filename='assets/homepage/img/stats-img.svg') }}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-7">
+
+            <div class="row gy-4">
+
+  <div class="col-lg-6">
+    <div class="stats-item d-flex">
+      <i class="bi bi-emoji-smile flex-shrink-0"></i>
+      <div>
+        <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="1" class="purecounter"></span>
+        <p><strong>Students Guided</strong> <span>towards better career paths</span></p>
+      </div>
+    </div>
+  </div><!-- End Stats Item -->
+
+  <div class="col-lg-6">
+    <div class="stats-item d-flex">
+      <i class="bi bi-journal-richtext flex-shrink-0"></i>
+      <div>
+        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+        <p><strong>Career Models Trained</strong> <span>for predictions & recommendations</span></p>
+      </div>
+    </div>
+  </div><!-- End Stats Item -->
+
+  <div class="col-lg-6">
+    <div class="stats-item d-flex">
+      <i class="bi bi-headset flex-shrink-0"></i>
+      <div>
+        <span data-purecounter-start="0" data-purecounter-end="3000" data-purecounter-duration="1" class="purecounter"></span>
+        <p><strong>Hours of Development</strong> <span>for building intelligent solutions</span></p>
+      </div>
+    </div>
+  </div><!-- End Stats Item -->
+
+  <div class="col-lg-6">
+    <div class="stats-item d-flex">
+      <i class="bi bi-people flex-shrink-0"></i>
+      <div>
+        <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+        <p><strong>Team Members</strong> <span>working passionately on CareerVista</span></p>
+      </div>
+    </div>
+  </div><!-- End Stats Item -->
+
+</div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+
+<!-- Services Section -->
+<section id="services" class="services section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <p>CareerVista empowers students with personalized, AI-driven career guidance to unlock their full potential.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h3>Career Path Prediction</h3>
+          <p>Our system analyzes academic data to suggest optimal career paths that align with student performance and goals.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-briefcase"></i>
+          </div>
+          <h3>Job Role Recommendation</h3>
+          <p>We match students' skills and interests with industry job roles using intelligent algorithms and career trend data.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-diagram-3"></i>
+          </div>
+          <h3>Stream/Domain Selection</h3>
+          <p>For students after 10th, we help identify the best academic stream (Science, Commerce, Arts, etc.) based on strengths and interests.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-bar-chart-line"></i>
+          </div>
+          <h3>Academic Performance Prediction</h3>
+          <p>Predict future academic performance and get early alerts about potential learning gaps to take timely action.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-lightbulb"></i>
+          </div>
+          <h3>Strengths & Weaknesses Analysis</h3>
+          <p>Identify academic strengths and weak subjects using smart analysis, and get tailored learning suggestions.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item --
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-award"></i>
+          </div>
+          <h3>Personalized Guidance Reports</h3>
+          <p>Get detailed downloadable reports with predictions, suggestions, and career insights tailored to each student.</p>
+          <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div><!-- End Service Item -->
+
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Career-Vista</span>
+          </a>
+          <p>© <span>Copyright</span> <strong class="px-1 sitename">Career-Vista</strong> <span>All Rights Reserved</span></p>
+        </div>
+       
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+ <!-- Vendor JS Files -->
+<script src="{{ url_for('static', filename='assets/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/homepage/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+
+<!-- Main JS File -->
+<script src="{{ url_for('static', filename='assets/homepage/js/main.js') }}"></script>
+
+
+</body>
+
+</html>
