@@ -25,6 +25,29 @@ def signin():
 def signup():
     return render_template('./signup/index.html')
 
+@app.route('/user')
+def user():
+    if 'email' in session:
+        email = session['email']
+        user = users_collection.find_one({'email': email})
+        if user:
+            name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
+            return render_template('./user/index.html', email=email, name=name)
+    return redirect(url_for('signin'))
+
+    
+@app.route('/signout')
+def signout():
+    session.clear()
+    return render_template_string("""
+        <script>
+            alert("You have been signed out successfully!");
+            window.location.href = "{{ url_for('home') }}";
+        </script>
+    """)
+
+
+
 @app.route('/userregistration', methods=['GET', 'POST'])
 def userregistration():
     if request.method == 'POST':
@@ -54,7 +77,7 @@ def userregistration():
         return render_template_string("""
             <script>
                 alert("Account registered successfully!");
-                window.location.href = "{{ url_for('home') }}";
+                window.location.href = "{{ url_for('signin') }}";
             </script>
         """)
     else:
@@ -74,7 +97,7 @@ def userlogin():
                 return render_template_string("""
                     <script>
                         alert("Login successful!");
-                        window.location.href = "{{ url_for('home') }}";
+                        window.location.href = "{{ url_for('user') }}";
                     </script>
                 """)
             else:
