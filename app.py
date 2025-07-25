@@ -35,6 +35,15 @@ def user():
             return render_template('./user/index.html', email=email, name=name)
     return redirect(url_for('signin'))
 
+@app.route('/careerpath')
+def careerpath():
+    if 'email' in session:
+        email = session['email']
+        user = users_collection.find_one({'email': email})
+        if user:
+            name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
+            return render_template('./user/careerpath.html', email=email, name=name)
+    return redirect(url_for('signin'))
     
 @app.route('/signout')
 def signout():

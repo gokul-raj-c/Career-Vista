@@ -36,6 +36,39 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+
+<script>
+  function handleStreamChange() {
+    const stream = document.getElementById("streamSelect").value;
+    const container = document.getElementById("subjectFields");
+    container.innerHTML = ""; // Clear previous
+
+    let fields = "";
+
+    const subjectMap = {
+      science_cs: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
+      science_bio: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
+      science_bioip: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
+      commerce: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
+      humanities: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
+    };
+
+    if (subjectMap[stream]) {
+      subjectMap[stream].forEach(subject => {
+        fields += `
+          <div class="col-md-12 mb-3">
+  <label for="${subject}" class="form-label">${subject}</label>
+  <input type="text" class="form-control" name="${subject}" id="${subject}" required>
+</div>
+        `;
+      });
+    }
+
+    container.innerHTML = fields;
+  }
+</script>
+
 </head>
 
 <body>
@@ -97,14 +130,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="bi bi-card-list"></i>
-          <span>Stream/Domain Selector(Post-10th)</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('careerpath') }}">
-          <i class="bi bi-card-list"></i>
-          <span>Career Path Prediction(Post-12th)</span>
+          <span>Career Path Prediction</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
@@ -115,7 +141,12 @@
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
-      
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="bi bi-card-list"></i>
+          <span>Stream/Domain Selector(Post-10th)</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -144,73 +175,100 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Home</h1>
+      <h1>Career Path</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active"><a href="#">Career Path</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
+           <div class="col-lg-6">
 
-     <!-- Stream/Domain Selection -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Stream/Domain Selector (Post-10th)</h5>
-          <p>Choose between Science, Commerce, or Arts stream based on your preferences and academic strength.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Career Path Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Career Path Prediction (Post 12th)</h5>
-          <p>Predict a student's most suitable career path(e.g., Engineering, Medicine,Arts, Law) based on their academic performance, chosen stream, learning style.</p>
-         <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+          <div class="card-fields">
+            <div class="card-body">
+              <h5 class="card-title">Form</h5>
 
- <!-- Job Role Recommendation -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Job Role Recommendation</h5>
-          <p>Get personalized job role suggestions based on your skills, interests, and experience level.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+              <!-- Horizontal Form -->
+             <form id="careerForm" class="row g-3">
 
-    <!-- Academic Performance Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Academic Performance Predictor</h5>
-          <p>Estimate your future GPA or academic outcome based on study habits and previous scores.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+  <!-- Stream Selection -->
+  <div class="col-md-12">
+    <label for="streamSelect" class="form-label">Stream</label>
+    <select class="form-select" id="streamSelect" required onchange="handleStreamChange()">
+      <option selected disabled>Select Stream</option>
+      <option value="science_cs">Science - Computer Science</option>
+      <option value="science_bio">Science - Biology</option>
+      <option value="science_bioip">Science - BioIP</option>
+      <option value="commerce">Commerce</option>
+      <option value="humanities">Humanities</option>
+    </select>
+  </div>
 
-    
-    <!-- Weak Subject Identifier -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Subject Strength & Weakness</h5>
-          <p>Find out which subjects are your strong and weak areas to plan your studies better.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+  <!-- Subject Fields (dynamically populated) -->
+  <div id="subjectFields" class="col-md-12"></div>
 
+  <!-- Preferred Learning Style -->
+  <div class="col-md-12">
+    <label for="learningStyle" class="form-label">Preferred Learning Style</label>
+    <select class="form-select" id="learningStyle" required>
+      <option value="">Select</option>
+  <option value="Practical">Practical / Hands-on</option>
+  <option value="Theoretical">Theoretical / Reading</option>
+  <option value="Research">Research-oriented</option>
+  <option value="Creative">Creative / Design-based</option>
+    </select>
+  </div>
+
+  <!-- Certifications -->
+  <div class="col-md-12">
+    <label for="certifications" class="form-label">Certifications</label>
+    <select class="form-select" id="certifications" required>
+          <option value="">Select</option>
+      <option value="Java">Java</option>
+  <option value="Python">Python</option>
+  <option value="AI_ML">AI / ML</option>
+  <option value="Web_Dev">Web Development</option>
+  <option value="Finance">Finance</option>
+  <option value="Public_Speaking">Public Speaking</option>
+  <option value="Ethical_Hacking">Ethical Hacking</option>
+  <option value="Graphic_Design">Graphic Design</option>
+  <option value="None">None</option>
+    </select>
+  </div>
+
+  <!-- Internship Domain -->
+  <div class="col-md-12">
+    <label for="internshipDomain" class="form-label">Internship Domain</label>
+    <select class="form-select" id="internshipDomain" required>
+      <option value="">Select</option>
+  <option value="IT_Firm">IT Firm</option>
+  <option value="Hospital">Hospital</option>
+  <option value="Court">Court</option>
+  <option value="NGO">NGO</option>
+  <option value="Bank">Bank</option>
+  <option value="Startup">Startup</option>
+  <option value="None">None</option>
+    </select>
+  </div>
+
+  <!-- Submit and Reset Buttons -->
+  <div class="text-center">
+   <button type="submit" class="btn" style="background-color: #008374; color: white;">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </div>
+
+</form>
+
+<!-- End Horizontal Form -->
+
+</div>
+</div>
+        </div>
+  
       </div>
     </section>
 
