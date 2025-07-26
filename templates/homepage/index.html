@@ -88,10 +88,10 @@
 
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
+    <!-- About Section --
     <section id="about" class="about section">
 
-      <!-- Section Title -->
+      <!-- Section Title --
       <div class="container section-title" data-aos="fade-up">
         <h2>About Us<br></h2>
         <p>CareerVista is an intelligent career guidance system built to empower students in making data-driven decisions about their academic and professional futures. Our platform leverages cutting-edge technologies in Artificial Intelligence and Machine Learning to provide personalized recommendations based on students' academic performance, skills, and interests.</p>
@@ -100,71 +100,73 @@
     </section><!-- /About Section -->
 
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
+  <!-- Stats Section -->
+<section id="stats" class="stats section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4 align-items-center">
+    <div class="row gy-2 align-items-center">
 
-          <div class="col-lg-5">
-           <img src="{{ url_for('static', filename='assets/homepage/img/stats-img.svg') }}" alt="" class="img-fluid">
-          </div>
-
-          <div class="col-lg-7">
-
-            <div class="row gy-4">
-
-  <div class="col-lg-6">
-    <div class="stats-item d-flex">
-      <i class="bi bi-emoji-smile flex-shrink-0"></i>
-      <div>
-        <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="1" class="purecounter"></span>
-        <p><strong>Students Guided</strong> <span>towards better career paths</span></p>
+      <!-- Image -->
+      <div class="col-lg-6">
+        <img src="{{ url_for('static', filename='assets/homepage/img/stats-img.svg') }}" alt="" class="img-fluid">
       </div>
-    </div>
-  </div><!-- End Stats Item -->
 
-  <div class="col-lg-6">
-    <div class="stats-item d-flex">
-      <i class="bi bi-journal-richtext flex-shrink-0"></i>
-      <div>
-        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-        <p><strong>Career Models Trained</strong> <span>for predictions & recommendations</span></p>
-      </div>
-    </div>
-  </div><!-- End Stats Item -->
+      <!-- About Us + Stats -->
+      <div class="col-lg-6">
 
-  <div class="col-lg-6">
-    <div class="stats-item d-flex">
-      <i class="bi bi-headset flex-shrink-0"></i>
-      <div>
-        <span data-purecounter-start="0" data-purecounter-end="3000" data-purecounter-duration="1" class="purecounter"></span>
-        <p><strong>Hours of Development</strong> <span>for building intelligent solutions</span></p>
-      </div>
-    </div>
-  </div><!-- End Stats Item -->
-
-  <div class="col-lg-6">
-    <div class="stats-item d-flex">
-      <i class="bi bi-people flex-shrink-0"></i>
-      <div>
-        <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
-        <p><strong>Team Members</strong> <span>working passionately on CareerVista</span></p>
-      </div>
-    </div>
-  </div><!-- End Stats Item -->
-
-</div>
-
-
-          </div>
-
+        <!-- About Us -->
+        <div class="mb-4">
+          <h3><strong>About Us</strong></h3>
+          <p>
+            CareerVista is an intelligent career guidance system built to empower students in making data-driven decisions about their academic and professional futures.
+            Our platform leverages cutting-edge technologies in Artificial Intelligence and Machine Learning to provide personalized recommendations based on students' academic performance, skills, and interests.
+          </p>
         </div>
 
-      </div>
+        <!-- Stats Items --
+        <div class="row gy-4">
 
-    </section><!-- /Stats Section -->
+          <div class="col-lg-6">
+            <div class="stats-item d-flex">
+              <i class="bi bi-journal-richtext flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+                <p><strong>Career Models Trained</strong> <span>for predictions & recommendations</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="stats-item d-flex">
+              <i class="bi bi-headset flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="3000" data-purecounter-duration="1" class="purecounter"></span>
+                <p><strong>Hours of Development</strong> <span>for building intelligent solutions</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="stats-item d-flex">
+              <i class="bi bi-people flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+                <p><strong>Team Members</strong> <span>working passionately on CareerVista</span></p>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End Stats Items -->
+
+      </div> <!-- End Right Column -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Stats Section -->
+
 
 
 <!-- Services Section -->
@@ -221,7 +223,7 @@
           <p>Predict future academic performance and get early alerts about potential learning gaps to take timely action.</p>
           <a href="{{ url_for('signin') }}" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
         </div>
-      </div><!-- End Service Item -->
+      </div><!-- End Service Item --
 
       <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
         <div class="service-item position-relative">

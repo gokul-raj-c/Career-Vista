@@ -36,6 +36,41 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+
+<script>
+  function handleStreamChange() {
+    const stream = document.getElementById("streamSelect").value;
+    const container = document.getElementById("subjectFields");
+    container.innerHTML = ""; // Clear previous
+
+    let fields = "";
+
+    const subjectMap = {
+      science_cs: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
+      science_bio: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
+      science_bioip: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
+      commerce: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
+      humanities: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
+    };
+
+    if (subjectMap[stream]) {
+      subjectMap[stream].forEach(subject => {
+        fields += `
+          <div class="col-md-12 mb-3">
+  <label for="${subject}" class="form-label">${subject}</label>
+  <input type="text" class="form-control" name="${subject}" id="${subject}" required>
+</div>
+        `;
+      });
+    }
+
+    container.innerHTML = fields;
+  }
+
+
+</script>
+
 </head>
 
 <body>
@@ -94,7 +129,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+        <li class="nav-item">
         <a class="nav-link" href="{{ url_for('streamselection') }}">
           <i class="bi bi-card-list"></i>
           <span>Stream/Domain Selector(Post-10th)</span>
@@ -115,7 +150,6 @@
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
-      
 
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('academic') }}">
@@ -144,73 +178,96 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Home</h1>
+      <h1>Stream/Domain</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active"><a href="#">Stream/Domain</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
+           <div class="col-lg-6">
 
-     <!-- Stream/Domain Selection -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Stream/Domain Selector (Post-10th)</h5>
-          <p>Choose between Science, Commerce, or Arts stream based on your preferences and academic strength.</p>
-          <a href="/streamselection" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Career Path Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Career Path Prediction (Post 12th)</h5>
-          <p>Predict a student's most suitable career path(e.g., Engineering, Medicine,Arts, Law) based on their academic performance, chosen stream, learning style.</p>
-         <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
+          <div class="card-fields">
+            <div class="card-body">
+              <h5 class="card-title">Form</h5>
+
+              <!-- Horizontal Form -->
+             <form id="streamPredictionForm" class="row g-3">
+
+  <!-- Subject Interests -->
+  <div class="col-md-12">
+
+    <div class="mb-2">
+      <label for="mathInterest" class="form-label">Mathematics</label>
+      <input type="text" class="form-control" id="mathInterest"  required>
     </div>
 
- <!-- Job Role Recommendation -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Job Role Recommendation</h5>
-          <p>Get personalized job role suggestions based on your skills, interests, and experience level.</p>
-          <a href="/jobrole" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
+    <div class="mb-2">
+      <label for="scienceInterest" class="form-label">Science</label>
+      <input type="text" class="form-control" id="scienceInterest"  required>
     </div>
 
-    <!-- Academic Performance Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Academic Performance Predictor</h5>
-          <p>Estimate your future GPA or academic outcome based on study habits and previous scores.</p>
-          <a href="/academic" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
+    <div class="mb-2">
+      <label for="englishInterest" class="form-label">English</label>
+      <input type="text" class="form-control" id="englishInterest"  required>
     </div>
 
-    
-    <!-- Weak Subject Identifier --
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Subject Strength & Weakness</h5>
-          <p>Find out which subjects are your strong and weak areas to plan your studies better.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
+    <div class="mb-2">
+      <label for="socialScienceInterest" class="form-label">Social Science</label>
+      <input type="text" class="form-control" id="socialScienceInterest"  required>
     </div>
 
+    <div class="mb-2">
+      <label for="itInterest" class="form-label">Computer / IT</label>
+      <input type="text" class="form-control" id="itInterest" required>
+    </div>
+  </div>
+
+  <!-- Preferred Learning Style -->
+  <div class="col-md-12">
+    <label for="learningStyle" class="form-label">Preferred Learning Style</label>
+    <select class="form-select" id="learningStyle" required>
+      <option value="">Select</option>
+      <option value="Practical">Practical / Hands-on</option>
+      <option value="Theoretical">Theoretical / Reading</option>
+      <option value="Research">Research-oriented</option>
+      <option value="Creative">Creative / Design-based</option>
+    </select>
+  </div>
+
+  <!-- Career Inclination -->
+  <div class="col-md-12">
+    <label for="careerInclination" class="form-label">Career Inclination</label>
+    <select class="form-select" id="careerInclination" required>
+      <option value="">Select</option>
+      <option value="Technology">Technology / Engineering</option>
+      <option value="Medical">Medical / Life Sciences</option>
+      <option value="Finance">Finance / Business</option>
+      <option value="Arts">Arts / Humanities</option>
+      <option value="Civics">Law / Politics / Civics</option>
+      <option value="Creative">Design / Media / Creative</option>
+      <option value="Skilled">Skilled Trades / Vocational</option>
+    </select>
+  </div>
+
+  <!-- Submit and Reset Buttons -->
+  <div class="text-center">
+    <button type="submit" class="btn" style="background-color: #008374; color: white;">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </div>
+</form>
+
+
+<!-- End Horizontal Form -->
+
+</div>
+</div>
+        </div>
+  
       </div>
     </section>
 

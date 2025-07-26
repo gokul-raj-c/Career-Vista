@@ -67,6 +67,8 @@
 
     container.innerHTML = fields;
   }
+
+
 </script>
 
 </head>
@@ -128,32 +130,32 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="bi bi-card-list"></i>
-          <span>Career Path Prediction</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="bi bi-card-list"></i>
-          <span>Job Role Recommendation</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url_for('streamselection') }}">
           <i class="bi bi-card-list"></i>
           <span>Stream/Domain Selector(Post-10th)</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url_for('careerpath') }}">
+          <i class="bi bi-card-list"></i>
+          <span>Career Path Prediction(Post-10th)</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('jobrole') }}">
+          <i class="bi bi-card-list"></i>
+          <span>Job Role Recommendation</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+<li class="nav-item">
+        <a class="nav-link" href="{{ url_for('academic') }}">
           <i class="bi bi-card-list"></i>
           <span>Academic Performance Predictor</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li><!-- End Register Page Nav --
 
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -193,7 +195,7 @@
               <h5 class="card-title">Form</h5>
 
               <!-- Horizontal Form -->
-             <form id="careerForm" class="row g-3">
+             <form id="careerForm" class="row g-3" action="/predict-career" method="POST">
 
   <!-- Stream Selection -->
   <div class="col-md-12">
@@ -260,7 +262,6 @@
    <button type="submit" class="btn" style="background-color: #008374; color: white;">Submit</button>
     <button type="reset" class="btn btn-secondary">Reset</button>
   </div>
-
 </form>
 
 <!-- End Horizontal Form -->

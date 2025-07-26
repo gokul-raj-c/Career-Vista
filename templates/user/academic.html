@@ -36,6 +36,41 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+
+<script>
+  function handleStreamChange() {
+    const stream = document.getElementById("streamSelect").value;
+    const container = document.getElementById("subjectFields");
+    container.innerHTML = ""; // Clear previous
+
+    let fields = "";
+
+    const subjectMap = {
+      science_cs: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
+      science_bio: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
+      science_bioip: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
+      commerce: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
+      humanities: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
+    };
+
+    if (subjectMap[stream]) {
+      subjectMap[stream].forEach(subject => {
+        fields += `
+          <div class="col-md-12 mb-3">
+  <label for="${subject}" class="form-label">${subject}</label>
+  <input type="text" class="form-control" name="${subject}" id="${subject}" required>
+</div>
+        `;
+      });
+    }
+
+    container.innerHTML = fields;
+  }
+
+
+</script>
+
 </head>
 
 <body>
@@ -94,7 +129,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+        <li class="nav-item">
         <a class="nav-link" href="{{ url_for('streamselection') }}">
           <i class="bi bi-card-list"></i>
           <span>Stream/Domain Selector(Post-10th)</span>
@@ -115,9 +150,8 @@
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
-      
 
-      <li class="nav-item">
+     <li class="nav-item">
         <a class="nav-link" href="{{ url_for('academic') }}">
           <i class="bi bi-card-list"></i>
           <span>Academic Performance Predictor</span>
@@ -144,73 +178,169 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Home</h1>
+      <h1>Academic Performance</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active"><a href="#">Academic Performance</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
+           <div class="col-lg-6">
 
-     <!-- Stream/Domain Selection -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Stream/Domain Selector (Post-10th)</h5>
-          <p>Choose between Science, Commerce, or Arts stream based on your preferences and academic strength.</p>
-          <a href="/streamselection" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Career Path Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Career Path Prediction (Post 12th)</h5>
-          <p>Predict a student's most suitable career path(e.g., Engineering, Medicine,Arts, Law) based on their academic performance, chosen stream, learning style.</p>
-         <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+          <div class="card-fields">
+            <div class="card-body">
+              <h5 class="card-title">Form</h5>
 
- <!-- Job Role Recommendation -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Job Role Recommendation</h5>
-          <p>Get personalized job role suggestions based on your skills, interests, and experience level.</p>
-          <a href="/jobrole" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+              <!-- Horizontal Form -->
+         <form id="academicPredictionForm" class="row g-3">
 
-    <!-- Academic Performance Prediction -->
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Academic Performance Predictor</h5>
-          <p>Estimate your future GPA or academic outcome based on study habits and previous scores.</p>
-          <a href="/academic" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+  <!-- 🕒 Hours Studied per Day -->
+  <div class="col-md-6">
+    <label for="hours_studied" class="form-label">Hours Studied per Day</label>
+    <input type="text" class="form-control" id="hours_studied"  required>
+  </div>
 
-    
-    <!-- Weak Subject Identifier --
-    <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Subject Strength & Weakness</h5>
-          <p>Find out which subjects are your strong and weak areas to plan your studies better.</p>
-          <a href="/careerpath" class="btn" style="background-color: #008374; color: white;">Try Now</a>
-        </div>
-      </div>
-    </div>
+  <!-- 📅 Attendance Percentage -->
+  <div class="col-md-6">
+    <label for="attendance" class="form-label">Attendance Percentage</label>
+    <input type="text" class="form-control" id="attendance"  required>
+  </div>
 
+  <!-- 💤 Average Sleep Hours per Day -->
+  <div class="col-md-6">
+    <label for="sleep_hours" class="form-label">Average Sleep Hours per Day</label>
+    <input type="text" class="form-control" id="sleep_hours"  required>
+  </div>
+
+  <!-- 📈 Previous Academic Score (%) -->
+  <div class="col-md-6">
+    <label for="previous_scores" class="form-label">Previous Academic Score (%)</label>
+    <input type="text" class="form-control" id="previous_scores"  required>
+  </div>
+
+  <!-- 👨‍👩‍👧 Parental Involvement Level -->
+  <div class="col-md-6">
+    <label for="parental_involvement" class="form-label">Parental Involvement Level</label>
+    <select class="form-select" id="parental_involvement" required>
+      <option value="">Select Level</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+  </div>
+
+  <!-- 📚 Number of Tutoring Sessions/Week -->
+  <div class="col-md-6">
+    <label for="tutoring_sessions" class="form-label">Tutoring Sessions/Week</label>
+    <input type="text" class="form-control" id="tutoring_sessions"  required>
+  </div>
+
+  <!-- 🧠 Any Learning Disabilities? -->
+  <div class="col-md-6">
+    <label for="learning_disabilities" class="form-label">Any Learning Disabilities?</label>
+    <select class="form-select" id="learning_disabilities" required>
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- 🤝 Peer Influence Level -->
+  <div class="col-md-6">
+    <label for="peer_influence" class="form-label">Peer Influence Level</label>
+    <select class="form-select" id="peer_influence" required>
+      <option value="">Select Level</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+  </div>
+
+  <!-- 💡 Motivation Level -->
+  <div class="col-md-6">
+    <label for="motivation_level" class="form-label">Motivation Level</label>
+    <select class="form-select" id="motivation_level" required>
+      <option value="">Select Level</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+  </div>
+
+  <!-- 🏫 Type of School -->
+  <div class="col-md-6">
+    <label for="school_type" class="form-label">Type of School</label>
+    <select class="form-select" id="school_type" required>
+      <option value="">Select Type</option>
+      <option value="Government">Government</option>
+      <option value="Private">Private</option>
+    </select>
+  </div>
+
+  <!-- 👩‍🏫 Teacher Quality Rating -->
+  <div class="col-md-6">
+    <label for="teacher_quality" class="form-label">Teacher Quality</label>
+    <select class="form-select" id="teacher_quality" required>
+      <option value="">Select Rating</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+  </div>
+
+  <!-- 🏠 Home Study Environment -->
+  <div class="col-md-6">
+    <label for="home_environment" class="form-label">Home Study Environment</label>
+    <select class="form-select" id="home_environment" required>
+      <option value="">Select Environment</option>
+      <option value="Quiet">Quiet</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Noisy">Noisy</option>
+    </select>
+  </div>
+
+  <!-- 💻 Access to Online Resources -->
+  <div class="col-md-6">
+    <label for="online_resources" class="form-label">Access to Online Resources</label>
+    <select class="form-select" id="online_resources" required>
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+  <label for="learning_style" class="form-label">Learning Style</label>
+  <select class="form-select" id="learning_style">
+    <option value="">Select</option>
+    <option value="Visual">Visual</option>
+    <option value="Auditory">Auditory</option>
+    <option value="Kinesthetic">Kinesthetic</option>
+    <option value="Reading/Writing">Reading/Writing</option>
+  </select>
+</div>
+
+
+  <!-- Submit Buttons -->
+  <div class="text-center">
+    <button type="submit" class="btn" style="background-color: #008374; color: white;">Predict Score</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </div>
+
+</form>
+
+
+
+<!-- End Horizontal Form -->
+
+</div>
+</div>
+        </div>
+  
       </div>
     </section>
 

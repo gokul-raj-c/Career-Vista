@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, render_template_string,session
 from flask_cors import CORS
 import bcrypt
+import joblib
 from pymongo import MongoClient
+import pandas as pd
 
 app = Flask(__name__)
 CORS(app)
@@ -43,6 +45,36 @@ def careerpath():
         if user:
             name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
             return render_template('./user/careerpath.html', email=email, name=name)
+    return redirect(url_for('signin'))
+
+@app.route('/streamselection')
+def streamselection():
+    if 'email' in session:
+        email = session['email']
+        user = users_collection.find_one({'email': email})
+        if user:
+            name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
+            return render_template('./user/streamselection.html', email=email, name=name)
+    return redirect(url_for('signin'))
+
+@app.route('/jobrole')
+def jobrole():
+    if 'email' in session:
+        email = session['email']
+        user = users_collection.find_one({'email': email})
+        if user:
+            name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
+            return render_template('./user/jobrole.html', email=email, name=name)
+    return redirect(url_for('signin'))
+
+@app.route('/academic')
+def academic():
+    if 'email' in session:
+        email = session['email']
+        user = users_collection.find_one({'email': email})
+        if user:
+            name = user.get('name', email.split('@')[0].capitalize())  # fallback to username if name missing
+            return render_template('./user/academic.html', email=email, name=name)
     return redirect(url_for('signin'))
     
 @app.route('/signout')
@@ -125,6 +157,8 @@ def userlogin():
             """)
     else:
         return render_template('./signin/index.html')
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)
