@@ -1,13 +1,18 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for, render_template_string,session
+from flask import Flask, request, jsonify, render_template, redirect, url_for, render_template_string,session,flash
 from flask_cors import CORS
 import bcrypt
 import joblib
 from pymongo import MongoClient
 import pandas as pd
+import joblib
+
 
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'goookul'
+
+from models.academic_model import predict_result_academic
+
 
 # MongoDB Atlas Connection
 client = MongoClient("mongodb+srv://gokulrajc63:epzaHzvtaYnxf4re@todo.1czrgxx.mongodb.net/?retryWrites=true&w=majority&appName=todo")
@@ -158,6 +163,59 @@ def userlogin():
     else:
         return render_template('./signin/index.html')
     
+@app.route('/academic-prediction', methods=['GET', 'POST'])
+def academic_model_prediction():
+    email = session['email']
+    user = users_collection.find_one({'email': email})
+    name = user.get('name', email.split('@')[0].capitalize())
+
+    if request.method == 'POST':
+        try:
+            # Collect form data
+            hours_studied = float(request.form['hours_studied'])
+            attendance = float(request.form['attendance'])
+            parental_involvement = int(request.form['parental_involvement'])
+            online_resources = int(request.form['online_resources'])
+            extra_caricular = int(request.form['extra_caricular'])
+            sleep_hours = float(request.form['sleep_hours'])
+            prev_scores = float(request.form['previous_score'])
+            motivation_level = int(request.form['motivation_level'])
+            internet_availability = int(request.form['internet_availability'])
+            tutoring_sessions = float(request.form['tutoring_sessions'])
+            family_income = int(request.form['family_income'])
+            teacher_quality = int(request.form['teacher_quality'])
+            school_type = int(request.form['school_type'])
+            peer_influence = int(request.form['peer_influence'])
+            learning_disability = int(request.form['learning_disabilitity'])
+            parental_education = int(request.form['parental_education'])
+            distance_from_home = int(request.form['distance_from_home'])
+            gender = int(request.form['gender'])
+
+            
+            # Create DataFrame for prediction
+            val_df = [
+                hours_studied, attendance, parental_involvement, online_resources,
+                extra_caricular, sleep_hours, prev_scores, motivation_level,
+                internet_availability, tutoring_sessions, learning_disability, peer_influence,
+                family_income, teacher_quality, school_type, parental_education,
+                distance_from_home, gender
+            ]
+
+            # Make prediction
+            prediction = predict_result_academic(val_df)[0]  # Get single value
+
+            return render_template('./user/academic_result.html', predicted_score=prediction,email=email, name=name)
+
+        except Exception as e:
+            import traceback
+            print("ERROR:", e)
+            traceback.print_exc()
+            flash(f"Error: {str(e)}")
+            return redirect(url_for('academic'))
+
+    return render_template('academic.html')
+
+
 
 
 if __name__ == '__main__':

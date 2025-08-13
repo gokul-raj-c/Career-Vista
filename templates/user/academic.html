@@ -38,38 +38,143 @@
   ======================================================== -->
 
 
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+	
+    </style>
+
 <script>
-  function handleStreamChange() {
-    const stream = document.getElementById("streamSelect").value;
-    const container = document.getElementById("subjectFields");
-    container.innerHTML = ""; // Clear previous
+  function validateForm(event) {
+    let Valid = true;
 
-    let fields = "";
-
-    const subjectMap = {
-      science_cs: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
-      science_bio: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
-      science_bioip: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
-      commerce: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
-      humanities: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
-    };
-
-    if (subjectMap[stream]) {
-      subjectMap[stream].forEach(subject => {
-        fields += `
-          <div class="col-md-12 mb-3">
-  <label for="${subject}" class="form-label">${subject}</label>
-  <input type="text" class="form-control" name="${subject}" id="${subject}" required>
-</div>
-        `;
-      });
+    // Utility function to check if a value is numeric
+    function isNumeric(value) {
+      return /^\d+(\.\d+)?$/.test(value);
     }
 
-    container.innerHTML = fields;
+    // Clear all error messages first
+    
+  document.querySelectorAll(".error-message").forEach(el => el.innerText = "");
+
+    // Get values
+   const studyHour = document.getElementById("hours_studied").value.trim();
+    const attendance = document.getElementById("attendance").value.trim();
+ const parental = document.getElementById("parental_involvement").value.trim();
+ const onlineAccess = document.getElementById("online_resources").value.trim();
+  const extra = document.getElementById("extra_caricular").value.trim();
+    const sleepHour = document.getElementById("sleep_hours").value.trim();
+    const prevScore = document.getElementById("previous_score").value.trim();
+   const motivation = document.getElementById("motivation_level").value.trim();
+const internet = document.getElementById("internet_availability").value.trim();
+    const tutoring = document.getElementById("tutoring_sessions").value.trim();
+const income = document.getElementById("family_income").value.trim();
+   const teacher = document.getElementById("teacher_quality").value.trim();
+const school = document.getElementById("school_type").value.trim();
+    const peer = document.getElementById("peer_influence").value.trim();
+    const disability = document.getElementById("learning_disability").value.trim();
+    const parenteducation = document.getElementById("parental_education").value.trim();
+    const distance = document.getElementById("distance_from_home").value.trim();
+    const gender = document.getElementById("gender").value.trim();
+
+
+    // Validate numeric fields
+    if (studyHour === "" || !isNumeric(studyHour)) {
+      document.getElementById("studyhourError").innerText = "Enter valid study hours.";
+      Valid = false;
+    }
+    if (attendance === "" || !isNumeric(attendance) || attendance > 100) {
+      document.getElementById("attendanceError").innerText = "Enter attendance (0-100%).";
+      Valid = false;
+    }
+    if (sleepHour === "" || !isNumeric(sleepHour)) {
+      document.getElementById("sleepError").innerText = "Enter valid sleep hours.";
+      Valid = false;
+    }
+    if (prevScore === "" || !isNumeric(prevScore) || prevScore > 100) {
+      document.getElementById("previousScoreError").innerText = "Previous score must be 0–100.";
+      Valid = false;
+    }
+if (tutoring === "" || !isNumeric(tutoring)) {
+      document.getElementById("tutoringError").innerText = "Enter valid tutoring hours.";
+      Valid = false;
+    }
+
+    // Validate dropdowns or selects (just ensure non-empty)
+    if (disability === "") {
+      document.getElementById("disabilityError").innerText = "Select disability status.";
+      Valid = false;
+    }
+
+    // Validate dropdowns or selects (just ensure non-empty)
+    if (parental === "") {
+      document.getElementById("parentalError").innerText = "Select parental involvement.";
+      Valid = false;
+    }
+if (onlineAccess === "") {
+      document.getElementById("resourcesError").innerText = "Select tutoring sessions.";
+      Valid = false;
+    }
+ if (extra === "") {
+      document.getElementById("extraError").innerText = "Enter Extra caricular .";
+      Valid = false;
+    }
+ if (motivation === "") {
+      document.getElementById("motivationError").innerText = "Enter motivation level.";
+      Valid = false;
+    }
+ if (internet === "") {
+      document.getElementById("internetError").innerText = "Enter motivation level.";
+      Valid = false;
+    }
+
+if (income === "") {
+      document.getElementById("incomeError").innerText = "Select a learning style.";
+      Valid = false;
+    }
+ if (teacher === "") {
+      document.getElementById("teacherError").innerText = "Enter teacher quality.";
+      Valid = false;
+    }
+  if (school === "") {
+      document.getElementById("schoolError").innerText = "Select school type.";
+      Valid = false;
+    }
+if (peer === "") {
+      document.getElementById("peerError").innerText = "Enter peer influence.";
+      Valid = false;
+    }
+    if (disability === "") {
+      document.getElementById("disabilityError").innerText = "Select disability status.";
+      Valid = false;
+    }
+    if (parenteducation === "") {
+      document.getElementById("educationError").innerText = "Enter online resources usage.";
+      Valid = false;
+    }
+if (distance === "") {
+      document.getElementById("distanceError").innerText = "Enter online resources usage.";
+      Valid = false;
+    }
+if (gender === "") {
+      document.getElementById("genderError").innerText = "Enter online resources usage.";
+      Valid = false;
+    }
+    
+   // Stop form submission if any validation failed
+        if (!Valid) {
+            event.preventDefault();
+        }
+
+        return Valid;
   }
 
-
 </script>
+
 
 </head>
 
@@ -196,140 +301,200 @@
               <h5 class="card-title">Form</h5>
 
               <!-- Horizontal Form -->
-         <form id="academicPredictionForm" class="row g-3">
+         <form id="academicPredictionForm" class="row g-3 signin-form" method="POST" action="/academic-prediction" onsubmit="return validateForm(event)">
+
 
   <!-- 🕒 Hours Studied per Day -->
-  <div class="col-md-6">
-    <label for="hours_studied" class="form-label">Hours Studied per Day</label>
-    <input type="text" class="form-control" id="hours_studied"  required>
-  </div>
-
-  <!-- 📅 Attendance Percentage -->
-  <div class="col-md-6">
-    <label for="attendance" class="form-label">Attendance Percentage</label>
-    <input type="text" class="form-control" id="attendance"  required>
-  </div>
-
-  <!-- 💤 Average Sleep Hours per Day -->
-  <div class="col-md-6">
-    <label for="sleep_hours" class="form-label">Average Sleep Hours per Day</label>
-    <input type="text" class="form-control" id="sleep_hours"  required>
-  </div>
-
-  <!-- 📈 Previous Academic Score (%) -->
-  <div class="col-md-6">
-    <label for="previous_scores" class="form-label">Previous Academic Score (%)</label>
-    <input type="text" class="form-control" id="previous_scores"  required>
-  </div>
-
-  <!-- 👨‍👩‍👧 Parental Involvement Level -->
-  <div class="col-md-6">
-    <label for="parental_involvement" class="form-label">Parental Involvement Level</label>
-    <select class="form-select" id="parental_involvement" required>
-      <option value="">Select Level</option>
-      <option value="High">High</option>
-      <option value="Medium">Medium</option>
-      <option value="Low">Low</option>
-    </select>
-  </div>
-
-  <!-- 📚 Number of Tutoring Sessions/Week -->
-  <div class="col-md-6">
-    <label for="tutoring_sessions" class="form-label">Tutoring Sessions/Week</label>
-    <input type="text" class="form-control" id="tutoring_sessions"  required>
-  </div>
-
-  <!-- 🧠 Any Learning Disabilities? -->
-  <div class="col-md-6">
-    <label for="learning_disabilities" class="form-label">Any Learning Disabilities?</label>
-    <select class="form-select" id="learning_disabilities" required>
-      <option value="">Select</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-  </div>
-
-  <!-- 🤝 Peer Influence Level -->
-  <div class="col-md-6">
-    <label for="peer_influence" class="form-label">Peer Influence Level</label>
-    <select class="form-select" id="peer_influence" required>
-      <option value="">Select Level</option>
-      <option value="High">High</option>
-      <option value="Medium">Medium</option>
-      <option value="Low">Low</option>
-    </select>
-  </div>
-
-  <!-- 💡 Motivation Level -->
-  <div class="col-md-6">
-    <label for="motivation_level" class="form-label">Motivation Level</label>
-    <select class="form-select" id="motivation_level" required>
-      <option value="">Select Level</option>
-      <option value="High">High</option>
-      <option value="Medium">Medium</option>
-      <option value="Low">Low</option>
-    </select>
-  </div>
-
-  <!-- 🏫 Type of School -->
-  <div class="col-md-6">
-    <label for="school_type" class="form-label">Type of School</label>
-    <select class="form-select" id="school_type" required>
-      <option value="">Select Type</option>
-      <option value="Government">Government</option>
-      <option value="Private">Private</option>
-    </select>
-  </div>
-
-  <!-- 👩‍🏫 Teacher Quality Rating -->
-  <div class="col-md-6">
-    <label for="teacher_quality" class="form-label">Teacher Quality</label>
-    <select class="form-select" id="teacher_quality" required>
-      <option value="">Select Rating</option>
-      <option value="High">High</option>
-      <option value="Medium">Medium</option>
-      <option value="Low">Low</option>
-    </select>
-  </div>
-
-  <!-- 🏠 Home Study Environment -->
-  <div class="col-md-6">
-    <label for="home_environment" class="form-label">Home Study Environment</label>
-    <select class="form-select" id="home_environment" required>
-      <option value="">Select Environment</option>
-      <option value="Quiet">Quiet</option>
-      <option value="Moderate">Moderate</option>
-      <option value="Noisy">Noisy</option>
-    </select>
-  </div>
-
-  <!-- 💻 Access to Online Resources -->
-  <div class="col-md-6">
-    <label for="online_resources" class="form-label">Access to Online Resources</label>
-    <select class="form-select" id="online_resources" required>
-      <option value="">Select</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-  </div>
-
-  <div class="col-md-6">
-  <label for="learning_style" class="form-label">Learning Style</label>
-  <select class="form-select" id="learning_style">
-    <option value="">Select</option>
-    <option value="Visual">Visual</option>
-    <option value="Auditory">Auditory</option>
-    <option value="Kinesthetic">Kinesthetic</option>
-    <option value="Reading/Writing">Reading/Writing</option>
-  </select>
+<div class="col-md-6">
+  <label for="hours_studied" class="form-label">Hours Studied per Day</label>
+  <input type="text" class="form-control" id="hours_studied" name="hours_studied">
+  <div id="studyhourError" class="error-message"></div>
 </div>
 
+<!-- 📅 Attendance Percentage -->
+<div class="col-md-6">
+  <label for="attendance" class="form-label">Attendance Percentage</label>
+  <input type="text" class="form-control" id="attendance" name="attendance">
+  <div id="attendanceError" class="error-message"></div>
+</div>
 
-  <!-- Submit Buttons -->
-  <div class="text-center">
-    <button type="submit" class="btn" style="background-color: #008374; color: white;">Predict Score</button>
-    <button type="reset" class="btn btn-secondary">Reset</button>
-  </div>
+<!-- 👨‍👩‍👧 Parental Involvement Level -->
+<div class="col-md-6">
+  <label for="parental_involvement" class="form-label">Parental Involvement Level</label>
+  <select class="form-select" id="parental_involvement"  name="parental_involvement">
+    <option value="">Select Level</option>
+    <option value="2">High</option>
+    <option value="1">Medium</option>
+    <option value="0">Low</option>
+  </select>
+  <div id="parentalError" class="error-message"></div>
+</div>
+
+<!-- 💻 Access to Online Resources -->
+<div class="col-md-6">
+  <label for="online_resources" class="form-label">Access to Online Resources</label>
+  <select class="form-select" id="online_resources" name="online_resources">
+    <option value="">Select Level</option>
+    <option value="2">High</option>
+    <option value="1">Medium</option>
+    <option value="0">Low</option>
+  </select>
+  <div id="resourcesError" class="error-message"></div>
+</div>
+
+<!-- 🎭 Extracurricular Activities -->
+<div class="col-md-6">
+  <label for="extra_caricular" class="form-label">Extra Curricular Activities</label>
+  <select class="form-select" id="extra_caricular" name="extra_caricular">
+    <option value="">Select</option>
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+  </select>
+  <div id="extraError" class="error-message"></div>
+</div>
+
+<!-- 💤 Sleep Hours -->
+<div class="col-md-6">
+  <label for="sleep_hours" class="form-label">Average Sleep Hours per Day</label>
+  <input type="text" class="form-control" id="sleep_hours" name="sleep_hours">
+  <div id="sleepError" class="error-message"></div>
+</div>
+
+<!-- 📈 Previous Score -->
+<div class="col-md-6">
+  <label for="previous_score" class="form-label">Previous Academic Score (%)</label>
+  <input type="text" class="form-control" id="previous_score" name="previous_score">
+  <div id="previousScoreError" class="error-message"></div>
+</div>
+
+<!-- 💡 Motivation -->
+<div class="col-md-6">
+  <label for="motivation_level" class="form-label">Motivation Level</label>
+  <select class="form-select" id="motivation_level" name="motivation_level">
+    <option value="">Select</option>
+    <option value="2">High</option>
+    <option value="1">Medium</option>
+    <option value="0">Low</option>
+  </select>
+  <div id="motivationError" class="error-message"></div>
+</div>
+
+<!-- 🌐 Internet -->
+<div class="col-md-6">
+  <label for="internet_availability" class="form-label">Internet Availability</label>
+  <select class="form-select" id="internet_availability" name="internet_availability">
+    <option value="">Select</option>
+    <option value="0">Yes</option>
+    <option value="1">No</option>
+  </select>
+  <div id="internetError" class="error-message"></div>
+</div>
+
+<!-- 📚 Tutoring -->
+<div class="col-md-6">
+  <label for="tutoring_sessions" class="form-label">Tutoring Sessions/Week</label>
+  <input type="text" class="form-control" id="tutoring_sessions" name="tutoring_sessions">
+  <div id="tutoringError" class="error-message"></div>
+</div>
+
+<!-- 💵 Family Income -->
+<div class="col-md-6">
+  <label for="family_income" class="form-label">Family Income</label>
+  <select class="form-select" id="family_income" name="family_income">
+    <option value="">Select Level</option>
+    <option value="2">High</option>
+    <option value="1">Medium</option>
+    <option value="0">Low</option>
+  </select>
+  <div id="incomeError" class="error-message"></div>
+</div>
+
+<!-- 👩‍🏫 Teacher Quality -->
+<div class="col-md-6">
+  <label for="teacher_quality" class="form-label">Teacher Quality</label>
+  <select class="form-select" id="teacher_quality" name="teacher_quality">
+    <option value="">Select Rating</option>
+    <option value="2">High</option>
+    <option value="1">Medium</option>
+    <option value="0">Low</option>
+  </select>
+  <div id="teacherError" class="error-message"></div>
+</div>
+
+<!-- 🏫 School Type -->
+<div class="col-md-6">
+  <label for="school_type" class="form-label">School Type</label>
+  <select class="form-select" id="school_type" name="school_type">
+    <option value="">Select</option>
+    <option value="0">Public</option>
+    <option value="1">Private</option>
+  </select>
+  <div id="schoolError" class="error-message"></div>
+</div>
+
+<!-- 👥 Peer Influence -->
+<div class="col-md-6">
+  <label for="peer_influence" class="form-label">Peer Influence Level</label>
+  <select class="form-select" id="peer_influence" name="peer_influence">
+    <option value="">Select Level</option>
+    <option value="2">Positive</option>
+    <option value="1">Neutral</option>
+    <option value="0">Negative</option>
+  </select>
+  <div id="peerError" class="error-message"></div>
+</div>
+
+<!-- 🧠 Learning Disabilities -->
+<div class="col-md-6">
+  <label for="learning_disability" class="form-label">Any Learning Disabilities?</label>
+  <select class="form-select" id="learning_disabilitity" name="learning_disabilitity">
+    <option value="">Select</option>
+    <option value="0">Yes</option>
+    <option value="1">No</option>
+  </select>
+  <div id="disabilityError" class="error-message"></div>
+</div>
+
+<!-- 🎓 Parental Education -->
+<div class="col-md-6">
+  <label for="parental_education" class="form-label">Parental Education Level</label>
+  <select class="form-select" id="parental_education" name="parental_education">
+    <option value="">Select Type</option>
+    <option value="0">High School</option>
+    <option value="1">College</option>
+    <option value="2">Postgraduate</option>
+  </select>
+  <div id="educationError" class="error-message"></div>
+</div>
+
+<!-- 🏠 Distance From Home -->
+<div class="col-md-6">
+  <label for="distance_from_home" class="form-label">Distance From Home</label>
+  <select class="form-select" id="distance_from_home" name="distance_from_home">
+    <option value="">Select Type</option>
+    <option value="0">Near</option>
+    <option value="1">Moderate</option>
+    <option value="2">Far</option>
+  </select>
+  <div id="distanceError" class="error-message"></div>
+</div>
+
+<!-- ⚧️ Gender -->
+<div class="col-md-6">
+  <label for="gender" class="form-label">Gender</label>
+  <select class="form-select" id="gender" name="gender">
+    <option value="">Select Type</option>
+    <option value="0">Male</option>
+    <option value="1">Female</option>
+  </select>
+  <div id="genderError" class="error-message"></div>
+</div>
+
+<!-- Submit Buttons -->
+<div class="text-center">
+  <button type="submit" class="btn" style="background-color: #008374; color: white;">Predict Score</button>
+  <button type="reset" class="btn btn-secondary">Reset</button>
+</div>
 
 </form>
 
