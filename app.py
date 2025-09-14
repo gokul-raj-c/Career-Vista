@@ -1,3 +1,5 @@
+
+#import modules
 from flask import Flask, request, jsonify, render_template, redirect, url_for, render_template_string,session,flash
 from flask_cors import CORS
 import bcrypt
@@ -5,12 +7,26 @@ import joblib
 from pymongo import MongoClient
 import pandas as pd
 import joblib
-
+from flask_mail import Mail, Message
+import random
 
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'goookul'
 
+
+# Flask-Mail Configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = "teamgarage4web@gmail.com"    
+app.config['MAIL_PASSWORD'] = "tptnqdqdzmojldoe"        
+app.config['MAIL_DEFAULT_SENDER'] = "your_email@gmail.com"
+
+mail = Mail(app)
+
+
+#models 
 from models.academic_model import predict_result_academic
 
 
@@ -93,6 +109,145 @@ def signout():
     """)
 
 
+@app.route('/forgotpassword')
+def forgotpassword():
+    return render_template('./forgotpassword/forgotpass.html')
+
+
+@app.route('/sendotp', methods=['GET', 'POST'])
+def sendotp():
+    if request.method == 'POST':
+        email = request.form.get('email')
+
+        # ✅ Check if email exists in DB
+        user = users_collection.find_one({"email": email})
+        if not user:
+            return render_template_string("""
+                <script>
+                    alert("Email is not registered!");
+                    window.location.href = "{{ url_for('forgotpassword') }}";
+                </script>
+            """)
+
+        # Generate 6-digit OTP
+        otp = str(random.randint(100000, 999999))
+
+        # Store OTP & email in session
+        session['otp'] = otp
+        session['email'] = email
+
+        # Send OTP email
+        try:
+            msg = Message("Your OTP Code", recipients=[email])
+            msg.body = f"Your OTP is {otp}. It will expire in 5 minutes."
+            mail.send(msg)
+            return render_template_string("""
+                <script>
+                    alert("OTP has been sent to your registered email!");
+                    window.location.href = "{{ url_for('enterotp') }}";
+                </script>
+            """)
+        except Exception as e:
+            print("Error sending email:", e)
+            return render_template_string("""
+                <script>
+                    alert("Could not send OTP. Please try again later.");
+                    window.location.href = "{{ url_for('forgotpassword') }}";
+                </script>
+            """)
+
+    return render_template('./forgotpassword/forgotpass.html')
+
+
+@app.route('/enterotp')
+def enterotp():
+    return render_template('./forgotpassword/verifyotp.html')
+
+    
+@app.route('/verifyotp', methods=['GET', 'POST'])
+def verifyotp():
+    if request.method == 'POST':
+        entered_otp = request.form.get('OTP')
+
+        # ✅ OTP Match
+        if 'otp' in session and entered_otp == session['otp']:
+            return """
+                <script>
+                    alert("OTP Verified Successfully!");
+                    window.location.href = '/newpassword';
+                </script>
+            """
+        else:
+            return """
+                <script>
+                    alert("Invalid OTP! Please try again.");
+                    window.location.href = '/forgotpassword';
+                </script>
+            """
+
+    return render_template('./forgotpassword/verifyotp.html')
+
+
+
+@app.route('/newpassword')
+def newpassword():
+    return render_template('./forgotpassword/newpassword.html')
+
+@app.route('/setnewpassword', methods=['GET', 'POST'])
+def setnewpassword():
+    if request.method == 'POST':
+        newpass = request.form.get('newpass')
+        confirmpass = request.form.get('confirmpass')
+
+        # Password mismatch
+        if newpass != confirmpass:
+            return """
+                <script>
+                    alert("Passwords do not match!");
+                    window.location.href = '/newpassword';
+                </script>
+            """
+
+        # Session expired
+        if 'email' not in session:
+            return """
+                <script>
+                    alert("Session expired. Please try again.");
+                    window.location.href = '/forgotpassword';
+                </script>
+            """
+
+        email = session['email']
+
+        # ✅ Hash new password
+        hashed_pw = bcrypt.hashpw(newpass.encode('utf-8'), bcrypt.gensalt())
+
+        # ✅ Update MongoDB
+        result = users_collection.update_one(
+            {"email": email},
+            {"$set": {"password": hashed_pw}}
+        )
+
+        if result.modified_count > 0:
+            message = "Password updated successfully! You can now login."
+        else:
+            message = "No changes made or user not found."
+
+        # Clear sensitive session data
+        session.pop('otp', None)
+        session.pop('email', None)
+
+        # Show alert and redirect to signin
+        return f"""
+            <script>
+                alert("{message}");
+                window.location.href = '/signin';
+            </script>
+        """
+
+    return render_template('./forgotpassword/newpassword.html')
+
+
 
 @app.route('/userregistration', methods=['GET', 'POST'])
 def userregistration():
@@ -124,6 +279,7 @@ def userregistration():
             <script>
                 alert("Account registered successfully!");
                 window.location.href = "{{ url_for('signin') }}";
+                                      
             </script>
         """)
     else:
@@ -162,7 +318,9 @@ def userlogin():
             """)
     else:
         return render_template('./signin/index.html')
-    
+
+
+
 @app.route('/academic-prediction', methods=['GET', 'POST'])
 def academic_model_prediction():
     email = session['email']

@@ -131,7 +131,7 @@ Author URL: http://w3layouts.com
   }
 
   .form-36-mian {
-    background-color: #008374;
+    background: url("../img/bgimg.jpg") no-repeat center center/cover;
     min-height: 100vh;
     display: grid;
     align-items: center;
