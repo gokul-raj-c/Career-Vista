@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Career Path Result - CareerVista</title>
+  <title>Stream Prediction Result - CareerVista</title>
 
   <!-- Favicons -->
   <link href="{{url_for('static',filename='assets/user/img/favicon.png')}}" rel="icon">
@@ -46,25 +46,6 @@
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{url_for('static',filename='assets/user/img/profile.jpg')}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{name}}</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header"><h6>{{name}}</h6></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ url_for('signout') }}">
-                <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
@@ -123,11 +104,11 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Career Path Prediction Result</h1>
+      <h1>Stream Prediction Result</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ url_for('user') }}">Home</a></li>
-          <li class="breadcrumb-item active">Result</li>
+          <li class="breadcrumb-item active">Stream Result</li>
         </ol>
       </nav>
     </div>
@@ -139,32 +120,34 @@
             <div class="card-body text-center p-4">
 
               <h4 class="card-title mb-3">
-                <i class="bi bi-briefcase-fill text-success"></i> Your Predicted Career Path
+                <i class="bi bi-book-fill text-success"></i> Your Predicted Stream
               </h4>
 
-              <!-- Predicted Career -->
+              <!-- Predicted Stream -->
               <h2>
-                <span class="badge bg-success">{{ predicted_value }}</span>
+                <span class="badge bg-success">{{ predicted_stream }}</span>
               </h2>
 
-              <!-- Feedback -->
+              <!-- Recommendations -->
               <p class="mt-3 fw-bold text-primary">
-  {% if predicted_value in ["Engineering","IT","Data Science"] %}
-    🚀 A bright future in tech awaits you! Focus on coding, projects, and innovation.
-  {% elif predicted_value in ["Medical","BioScience","Health IT","Nursing","Bioinformatics"] %}
-    🏥 A rewarding career in healthcare or life sciences! Keep up your dedication to science and humanity.
-  {% elif predicted_value in ["Business","Finance","Marketing"] %}
-    💼 Your path leads to commerce, business, or finance! Build strong analytical & entrepreneurial skills.
-  {% elif predicted_value in ["Public Services","Law","Social Sciences","Education","Media"] %}
-    ⚖️ Humanities & Social Sciences will shape your career! Communication & critical thinking are key.
+  {% if predicted_stream == "CS" %}
+    💻 Focus on programming, algorithms, robotics, and computer-based projects. Consider clubs or online courses to strengthen coding skills.
+  {% elif predicted_stream == "Bio" %}
+    🔬 Concentrate on biology, chemistry, and lab work. Participate in science fairs and medical workshops to enhance practical knowledge.
+  {% elif predicted_stream == "BioIP" %}
+    🧬 Focus on biotechnology, computer-aided biology, and research projects. Develop skills in bioinformatics and laboratory software.
+  {% elif predicted_stream == "Humanities" %}
+    📖 Engage with history, literature, social sciences, and communication. Join debate clubs, write blogs, and explore social research projects.
+  {% elif predicted_stream == "Commerce" %}
+    💼 Concentrate on mathematics, economics, accounting, and finance. Participate in business simulations and entrepreneurship activities.
   {% else %}
-    🌟 Your career path is unique — keep learning and adapting to achieve excellence!
+    🌟 Explore your interests and keep learning across subjects to find your ideal stream!
   {% endif %}
 </p>
 
               <!-- Action Buttons -->
               <div class="mt-4 d-flex justify-content-between">
-                <a href="{{ url_for('careerpath') }}" class="btn btn-custom">
+                <a href="{{ url_for('streamselection') }}" class="btn btn-custom">
                   <i class="bi bi-arrow-repeat"></i> Predict Again
                 </a>
                 <a href="{{ url_for('user') }}" class="btn btn-outline-secondary">

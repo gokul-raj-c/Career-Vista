@@ -29,7 +29,7 @@ mail = Mail(app)
 #models 
 from models.academic_model import predict_result_academic
 from models.careerpath_model import predict_result_career
-
+from models.stream_model import predict_result_stream
 
 # MongoDB Atlas Connection
 client = MongoClient("mongodb+srv://gokulrajc63:epzaHzvtaYnxf4re@todo.1czrgxx.mongodb.net/?retryWrites=true&w=majority&appName=todo")
@@ -374,6 +374,10 @@ def academic_model_prediction():
 
     return render_template('academic.html')
 
+
+
+
+
 @app.route('/careerpath-prediction', methods=['GET', 'POST'])
 def careerpath_model_prediction():
     email = session['email']
@@ -424,6 +428,46 @@ def careerpath_model_prediction():
             return redirect(url_for('careerpath'))
 
     return render_template('careerpath.html')
+
+
+
+@app.route('/stream-prediction', methods=['GET', 'POST'])
+def stream_model_prediction():
+    email = session['email']
+    user = users_collection.find_one({'email': email})
+    name = user.get('name', email.split('@')[0].capitalize())
+
+    if request.method == 'POST':
+        try:
+            # Collect form data
+            mathMarks = float(request.form['mathMarks'])
+            scienceMarks = float(request.form['scienceMarks'])
+            englishMarks = float(request.form['englishMarks'])
+            socialScienceMarks = float(request.form['socialScienceMarks'])
+            itMarks = float(request.form['itMarks'])
+            learningStyle = int(request.form['learningStyle'])
+            careerInclination = int(request.form['careerInclination'])
+            
+
+            # Create DataFrame for prediction
+            val_df = [
+                mathMarks, scienceMarks,englishMarks, socialScienceMarks, itMarks,
+                learningStyle, careerInclination
+            ]
+
+            # Make prediction
+            prediction = predict_result_stream(val_df)  # Get single value
+
+            return render_template('./user/streamselection_result.html', predicted_stream=prediction,email=email, name=name)
+
+        except Exception as e:
+            import traceback
+            print("ERROR:", e)
+            traceback.print_exc()
+            flash(f"Error: {str(e)}")
+            return redirect(url_for('streamselection'))
+
+    return render_template('streamselection.html')
 
 
 

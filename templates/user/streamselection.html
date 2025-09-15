@@ -196,61 +196,61 @@
               <h5 class="card-title">Form</h5>
 
               <!-- Horizontal Form -->
-             <form id="streamPredictionForm" class="row g-3">
+             <form id="streamPredictionForm" class="row g-3" action="/stream-prediction" method="POST">
 
   <!-- Subject Interests -->
   <div class="col-md-12">
 
     <div class="mb-2">
       <label for="mathInterest" class="form-label">Mathematics</label>
-      <input type="text" class="form-control" id="mathInterest"  required>
+      <input type="text" class="form-control" id="mathMark" name="mathMarks"  required>
     </div>
 
     <div class="mb-2">
       <label for="scienceInterest" class="form-label">Science</label>
-      <input type="text" class="form-control" id="scienceInterest"  required>
+      <input type="text" class="form-control" id="scienceMarks" name="scienceMarks"  required>
     </div>
 
     <div class="mb-2">
       <label for="englishInterest" class="form-label">English</label>
-      <input type="text" class="form-control" id="englishInterest"  required>
+      <input type="text" class="form-control" id="englishMarks" name="englishMarks" required>
     </div>
 
     <div class="mb-2">
       <label for="socialScienceInterest" class="form-label">Social Science</label>
-      <input type="text" class="form-control" id="socialScienceInterest"  required>
+      <input type="text" class="form-control" id="socialScienceMarks" name="socialScienceMarks" required>
     </div>
 
     <div class="mb-2">
       <label for="itInterest" class="form-label">Computer / IT</label>
-      <input type="text" class="form-control" id="itInterest" required>
+      <input type="text" class="form-control" id="itMarks"  name="itMarks"required>
     </div>
   </div>
 
   <!-- Preferred Learning Style -->
   <div class="col-md-12">
     <label for="learningStyle" class="form-label">Preferred Learning Style</label>
-    <select class="form-select" id="learningStyle" required>
+    <select class="form-select" id="learningStyle" name="learningStyle" required>
       <option value="">Select</option>
-      <option value="Practical">Practical / Hands-on</option>
-      <option value="Theoretical">Theoretical / Reading</option>
-      <option value="Research">Research-oriented</option>
-      <option value="Creative">Creative / Design-based</option>
+      <option value="0">Practical / Hands-on</option>
+      <option value="1">Theoretical / Reading</option>
+      <option value="2">Research-oriented</option>
+      <option value="3">Creative / Design-based</option>
     </select>
   </div>
 
   <!-- Career Inclination -->
   <div class="col-md-12">
     <label for="careerInclination" class="form-label">Career Inclination</label>
-    <select class="form-select" id="careerInclination" required>
+    <select class="form-select" id="careerInclination" name="careerInclination" required>
       <option value="">Select</option>
-      <option value="Technology">Technology / Engineering</option>
-      <option value="Medical">Medical / Life Sciences</option>
-      <option value="Finance">Finance / Business</option>
-      <option value="Arts">Arts / Humanities</option>
-      <option value="Civics">Law / Politics / Civics</option>
-      <option value="Creative">Design / Media / Creative</option>
-      <option value="Skilled">Skilled Trades / Vocational</option>
+      <option value="0">Technology / Engineering</option>
+      <option value="1">Medical / Life Sciences</option>
+      <option value="2">Finance / Business</option>
+      <option value="3">Arts / Humanities</option>
+      <option value="4">Law / Politics / Civics</option>
+      <option value="5">Design / Media / Creative</option>
+      <option value="6">Skilled Trades / Vocational</option>
     </select>
   </div>
 
