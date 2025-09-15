@@ -28,6 +28,7 @@ mail = Mail(app)
 
 #models 
 from models.academic_model import predict_result_academic
+from models.careerpath_model import predict_result_career
 
 
 # MongoDB Atlas Connection
@@ -373,6 +374,56 @@ def academic_model_prediction():
 
     return render_template('academic.html')
 
+@app.route('/careerpath-prediction', methods=['GET', 'POST'])
+def careerpath_model_prediction():
+    email = session['email']
+    user = users_collection.find_one({'email': email})
+    name = user.get('name', email.split('@')[0].capitalize())
+
+    if request.method == 'POST':
+        try:
+            stream = int(request.form['streamSelect'])
+            learning_style = int(request.form['learningStyle'])
+            certification = int(request.form['certifications'])
+            internship_domain = int(request.form['internshipDomain'])
+
+            # Map streams to relevant subjects
+            stream_subjects = {
+            0: ['Math', 'Physics', 'Chemistry', 'Computer_Science', 'English'],  # science_cs
+            3: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],           # science_bio
+            4: ['Biology', 'Physics', 'Chemistry', 'Computer_Science', 'English'], # science_bioip
+            2: ['Accountancy', 'Economics', 'Business_Studies', 'Math', 'English'], # commerce
+            1: ['History', 'Political_Science', 'Economics', 'Psychology', 'English'] # humanities
+            }
+
+            # Collect subject scores for selected stream
+            subject_scores = {}
+            for subject in stream_subjects.get(stream, []):
+                value = request.form.get(subject)
+                subject_scores[subject] = float(value) if value else 0
+
+            val_dict = {
+            "stream": stream,
+            "learning_style": learning_style,
+            "certification": certification,
+            "internship_domain": internship_domain,
+            **subject_scores
+            }
+
+
+            # Make prediction
+            prediction = predict_result_career(val_dict)
+
+            return render_template('./user/careerpath_result.html', predicted_value=prediction,email=email, name=name)
+
+        except Exception as e:
+            import traceback
+            print("ERROR:", e)
+            traceback.print_exc()
+            flash(f"Error: {str(e)}")
+            return redirect(url_for('careerpath'))
+
+    return render_template('careerpath.html')
 
 
 

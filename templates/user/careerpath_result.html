@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Career Path Result - CareerVista</title>
+
+  <!-- Favicons -->
+  <link href="{{url_for('static',filename='assets/user/img/favicon.png')}}" rel="icon">
+  <link href="{{url_for('static',filename='assets/user/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{url_for('static',filename='assets/user/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/user/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/user/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/user/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/user/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{url_for('static',filename='assets/user/css/style.css')}}" rel="stylesheet">
+
+  <style>
+    .btn-custom {
+      border-color: #008374;
+      color: #008374;
+    }
+    .btn-custom:hover {
+      background-color: #008374;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{ url_for('user') }}" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Career-Vista</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{{url_for('static',filename='assets/user/img/profile.jpg')}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{name}}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header"><h6>{{name}}</h6></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{ url_for('signout') }}">
+                <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('user') }}"><i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('streamselection') }}"><i class="bi bi-card-list"></i><span>Stream Selector</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('careerpath') }}"><i class="bi bi-card-list"></i><span>Career Path Prediction</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('jobrole') }}"><i class="bi bi-card-list"></i><span>Job Role Recommendation</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('academic') }}"><i class="bi bi-card-list"></i><span>Academic Predictor</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('signout') }}"><i class="bi bi-box-arrow-in-right"></i><span>Sign Out</span></a></li>
+    </ul>
+  </aside><!-- End Sidebar -->
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Career Path Prediction Result</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('user') }}">Home</a></li>
+          <li class="breadcrumb-item active">Result</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body text-center p-4">
+
+              <h4 class="card-title mb-3">
+                <i class="bi bi-briefcase-fill text-success"></i> Your Predicted Career Path
+              </h4>
+
+              <!-- Predicted Career -->
+              <h2>
+                <span class="badge bg-success">{{ predicted_value }}</span>
+              </h2>
+
+              <!-- Feedback -->
+              <p class="mt-3 fw-bold text-primary">
+  {% if predicted_value in ["Engineering","IT","Data Science"] %}
+    🚀 A bright future in tech awaits you! Focus on coding, projects, and innovation.
+  {% elif predicted_value in ["Medical","BioScience","Health IT","Nursing","Bioinformatics"] %}
+    🏥 A rewarding career in healthcare or life sciences! Keep up your dedication to science and humanity.
+  {% elif predicted_value in ["Business","Finance","Marketing"] %}
+    💼 Your path leads to commerce, business, or finance! Build strong analytical & entrepreneurial skills.
+  {% elif predicted_value in ["Public Services","Law","Social Sciences","Education","Media"] %}
+    ⚖️ Humanities & Social Sciences will shape your career! Communication & critical thinking are key.
+  {% else %}
+    🌟 Your career path is unique — keep learning and adapting to achieve excellence!
+  {% endif %}
+</p>
+
+              <!-- Action Buttons -->
+              <div class="mt-4 d-flex justify-content-between">
+                <a href="{{ url_for('careerpath') }}" class="btn btn-custom">
+                  <i class="bi bi-arrow-repeat"></i> Predict Again
+                </a>
+                <a href="{{ url_for('user') }}" class="btn btn-outline-secondary">
+                  <i class="bi bi-house-door-fill"></i> Dashboard
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Career-Vista</span></strong>. All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- Vendor JS Files -->
+  <script src="{{url_for('static',filename='assets/user/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/user/vendor/simple-datatables/simple-datatables.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{url_for('static',filename='assets/user/js/main.js')}}"></script>
+
+</body>
+</html>

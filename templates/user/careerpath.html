@@ -47,11 +47,11 @@
     let fields = "";
 
     const subjectMap = {
-      science_cs: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
-      science_bio: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
-      science_bioip: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
-      commerce: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
-      humanities: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
+      0: ['Math', 'Physics', 'Chemistry', 'Computer Science', 'English'],
+      3: ['Biology', 'Physics', 'Chemistry', 'Math', 'English'],
+      4: ['Biology', 'Physics', 'Chemistry', 'Computer', 'English'],
+      2: ['Accountancy', 'Economics', 'Business Studies', 'Math', 'English'],
+      1: ['History', 'Political Science', 'Economics', 'Psychology', 'English']
     };
 
     if (subjectMap[stream]) {
@@ -195,12 +195,12 @@
               <h5 class="card-title">Form</h5>
 
               <!-- Horizontal Form -->
-             <form id="careerForm" class="row g-3" action="/predict-career" method="POST">
+             <form id="careerForm" class="row g-3" action="/careerpath-prediction" method="POST">
 
   <!-- Stream Selection -->
   <div class="col-md-12">
     <label for="streamSelect" class="form-label">Stream</label>
-    <select class="form-select" id="streamSelect" required onchange="handleStreamChange()">
+    <select class="form-select" name="streamSelect" id="streamSelect" required onchange="handleStreamChange()">
       <option selected disabled>Select Stream</option>
       <option value="0">Science - Computer Science</option>
       <option value="3">Science - Biology</option>
@@ -216,7 +216,7 @@
   <!-- Preferred Learning Style -->
   <div class="col-md-12">
     <label for="learningStyle" class="form-label">Preferred Learning Style</label>
-    <select class="form-select" id="learningStyle" required>
+    <select class="form-select" name="learningStyle" id="learningStyle" required>
       <option value="">Select</option>
   <option value="3">Practical / Hands-on</option>
   <option value="1">Theoretical / Reading</option>
@@ -228,7 +228,7 @@
   <!-- Certifications -->
   <div class="col-md-12">
     <label for="certifications" class="form-label">Certifications</label>
-    <select class="form-select" id="certifications" required>
+    <select class="form-select" name="certifications" id="certifications" required>
           <option value="">Select</option>
       <option value="3">Java</option>
   <option value="6">Python</option>
@@ -245,7 +245,7 @@
   <!-- Internship Domain -->
   <div class="col-md-12">
     <label for="internshipDomain" class="form-label">Internship Domain</label>
-    <select class="form-select" id="internshipDomain" required>
+    <select class="form-select" name="internshipDomain" id="internshipDomain" required>
       <option value="">Select</option>
   <option value="2">IT Firm</option>
   <option value="4">Hospital</option>
