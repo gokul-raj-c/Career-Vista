@@ -59,7 +59,7 @@
         fields += `
           <div class="col-md-12 mb-3">
   <label for="${subject}" class="form-label">${subject}</label>
-  <input type="text" class="form-control" name="${subject}" id="${subject}" required>
+  <input type="text" class="form-control" name="${subject}" id="${subject}"  pattern="^\d{1,2}(\.\d+)?$" required>
 </div>
         `;
       });
@@ -201,7 +201,7 @@
   <div class="col-md-12">
     <label for="streamSelect" class="form-label">Stream</label>
     <select class="form-select" name="streamSelect" id="streamSelect" required onchange="handleStreamChange()">
-      <option selected disabled>Select Stream</option>
+      <option selected disabled>Select</option>
       <option value="0">Science - Computer Science</option>
       <option value="3">Science - Biology</option>
       <option value="4">Science - BioIP</option>

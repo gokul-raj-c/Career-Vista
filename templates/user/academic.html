@@ -307,22 +307,22 @@ if (gender === "") {
   <!-- 🕒 Hours Studied per Day -->
 <div class="col-md-6">
   <label for="hours_studied" class="form-label">Hours Studied per Day</label>
-  <input type="text" class="form-control" id="hours_studied" name="hours_studied">
+  <input type="text" class="form-control" id="hours_studied" name="hours_studied" pattern="^\d{1,2}(\.\d+)?$" required >
   <div id="studyhourError" class="error-message"></div>
 </div>
 
 <!-- 📅 Attendance Percentage -->
 <div class="col-md-6">
   <label for="attendance" class="form-label">Attendance Percentage</label>
-  <input type="text" class="form-control" id="attendance" name="attendance">
+  <input type="text" class="form-control" id="attendance" name="attendance" pattern="^\d{1,2}(\.\d+)?$" required >
   <div id="attendanceError" class="error-message"></div>
 </div>
 
 <!-- 👨‍👩‍👧 Parental Involvement Level -->
 <div class="col-md-6">
   <label for="parental_involvement" class="form-label">Parental Involvement Level</label>
-  <select class="form-select" id="parental_involvement"  name="parental_involvement">
-    <option value="">Select Level</option>
+  <select class="form-select" id="parental_involvement"  name="parental_involvement" required>
+    <option value="">Select</option>
     <option value="2">High</option>
     <option value="1">Medium</option>
     <option value="0">Low</option>
@@ -333,8 +333,8 @@ if (gender === "") {
 <!-- 💻 Access to Online Resources -->
 <div class="col-md-6">
   <label for="online_resources" class="form-label">Access to Online Resources</label>
-  <select class="form-select" id="online_resources" name="online_resources">
-    <option value="">Select Level</option>
+  <select class="form-select" id="online_resources" name="online_resources" required>
+    <option value="">Select</option>
     <option value="2">High</option>
     <option value="1">Medium</option>
     <option value="0">Low</option>
@@ -345,7 +345,7 @@ if (gender === "") {
 <!-- 🎭 Extracurricular Activities -->
 <div class="col-md-6">
   <label for="extra_caricular" class="form-label">Extra Curricular Activities</label>
-  <select class="form-select" id="extra_caricular" name="extra_caricular">
+  <select class="form-select" id="extra_caricular" name="extra_caricular" required>
     <option value="">Select</option>
     <option value="1">Yes</option>
     <option value="0">No</option>
@@ -356,21 +356,21 @@ if (gender === "") {
 <!-- 💤 Sleep Hours -->
 <div class="col-md-6">
   <label for="sleep_hours" class="form-label">Average Sleep Hours per Day</label>
-  <input type="text" class="form-control" id="sleep_hours" name="sleep_hours">
+  <input type="text" class="form-control" id="sleep_hours" name="sleep_hours" pattern="^\d{1,2}(\.\d+)?$" required>
   <div id="sleepError" class="error-message"></div>
 </div>
 
 <!-- 📈 Previous Score -->
 <div class="col-md-6">
   <label for="previous_score" class="form-label">Previous Academic Score (%)</label>
-  <input type="text" class="form-control" id="previous_score" name="previous_score">
+  <input type="text" class="form-control" id="previous_score" name="previous_score" pattern="^\d{1,2}(\.\d+)?$" required>
   <div id="previousScoreError" class="error-message"></div>
 </div>
 
 <!-- 💡 Motivation -->
 <div class="col-md-6">
   <label for="motivation_level" class="form-label">Motivation Level</label>
-  <select class="form-select" id="motivation_level" name="motivation_level">
+  <select class="form-select" id="motivation_level" name="motivation_level" required>
     <option value="">Select</option>
     <option value="2">High</option>
     <option value="1">Medium</option>
@@ -382,7 +382,7 @@ if (gender === "") {
 <!-- 🌐 Internet -->
 <div class="col-md-6">
   <label for="internet_availability" class="form-label">Internet Availability</label>
-  <select class="form-select" id="internet_availability" name="internet_availability">
+  <select class="form-select" id="internet_availability" name="internet_availability" required>
     <option value="">Select</option>
     <option value="0">Yes</option>
     <option value="1">No</option>
@@ -393,15 +393,15 @@ if (gender === "") {
 <!-- 📚 Tutoring -->
 <div class="col-md-6">
   <label for="tutoring_sessions" class="form-label">Tutoring Sessions/Week</label>
-  <input type="text" class="form-control" id="tutoring_sessions" name="tutoring_sessions">
+  <input type="text" class="form-control" id="tutoring_sessions" name="tutoring_sessions" pattern="^\d{1,2}(\.\d+)?$" required>
   <div id="tutoringError" class="error-message"></div>
 </div>
 
 <!-- 💵 Family Income -->
 <div class="col-md-6">
   <label for="family_income" class="form-label">Family Income</label>
-  <select class="form-select" id="family_income" name="family_income">
-    <option value="">Select Level</option>
+  <select class="form-select" id="family_income" name="family_income" required>
+    <option value="">Select</option>
     <option value="2">High</option>
     <option value="1">Medium</option>
     <option value="0">Low</option>
@@ -412,8 +412,8 @@ if (gender === "") {
 <!-- 👩‍🏫 Teacher Quality -->
 <div class="col-md-6">
   <label for="teacher_quality" class="form-label">Teacher Quality</label>
-  <select class="form-select" id="teacher_quality" name="teacher_quality">
-    <option value="">Select Rating</option>
+  <select class="form-select" id="teacher_quality" name="teacher_quality" required>
+    <option value="">Select</option>
     <option value="2">High</option>
     <option value="1">Medium</option>
     <option value="0">Low</option>
@@ -424,7 +424,7 @@ if (gender === "") {
 <!-- 🏫 School Type -->
 <div class="col-md-6">
   <label for="school_type" class="form-label">School Type</label>
-  <select class="form-select" id="school_type" name="school_type">
+  <select class="form-select" id="school_type" name="school_type" required>
     <option value="">Select</option>
     <option value="0">Public</option>
     <option value="1">Private</option>
@@ -435,8 +435,8 @@ if (gender === "") {
 <!-- 👥 Peer Influence -->
 <div class="col-md-6">
   <label for="peer_influence" class="form-label">Peer Influence Level</label>
-  <select class="form-select" id="peer_influence" name="peer_influence">
-    <option value="">Select Level</option>
+  <select class="form-select" id="peer_influence" name="peer_influence" required>
+    <option value="">Select</option>
     <option value="2">Positive</option>
     <option value="1">Neutral</option>
     <option value="0">Negative</option>
@@ -447,7 +447,7 @@ if (gender === "") {
 <!-- 🧠 Learning Disabilities -->
 <div class="col-md-6">
   <label for="learning_disability" class="form-label">Any Learning Disabilities?</label>
-  <select class="form-select" id="learning_disabilitity" name="learning_disabilitity">
+  <select class="form-select" id="learning_disabilitity" name="learning_disabilitity" required>
     <option value="">Select</option>
     <option value="0">Yes</option>
     <option value="1">No</option>
@@ -458,8 +458,8 @@ if (gender === "") {
 <!-- 🎓 Parental Education -->
 <div class="col-md-6">
   <label for="parental_education" class="form-label">Parental Education Level</label>
-  <select class="form-select" id="parental_education" name="parental_education">
-    <option value="">Select Type</option>
+  <select class="form-select" id="parental_education" name="parental_education" required>
+    <option value="">Select</option>
     <option value="0">High School</option>
     <option value="1">College</option>
     <option value="2">Postgraduate</option>
@@ -470,8 +470,8 @@ if (gender === "") {
 <!-- 🏠 Distance From Home -->
 <div class="col-md-6">
   <label for="distance_from_home" class="form-label">Distance From Home</label>
-  <select class="form-select" id="distance_from_home" name="distance_from_home">
-    <option value="">Select Type</option>
+  <select class="form-select" id="distance_from_home" name="distance_from_home" required>
+    <option value="">Select</option>
     <option value="0">Near</option>
     <option value="1">Moderate</option>
     <option value="2">Far</option>
@@ -482,8 +482,8 @@ if (gender === "") {
 <!-- ⚧️ Gender -->
 <div class="col-md-6">
   <label for="gender" class="form-label">Gender</label>
-  <select class="form-select" id="gender" name="gender">
-    <option value="">Select Type</option>
+  <select class="form-select" id="gender" name="gender" required>
+    <option value="">Select</option>
     <option value="0">Male</option>
     <option value="1">Female</option>
   </select>

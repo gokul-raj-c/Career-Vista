@@ -198,104 +198,187 @@
               <!-- Horizontal Form -->
              <form id="jobRoleForm" class="row g-3">
 
+
+<div class="col-md-6">
+  <label for="logicalrating" class="form-label">Logical rating</label>
+  <input type="text" class="form-control" id="logicalrating" name="logicalrating" pattern="^\d{1,2}(\.\d+)?$" required>
+</div>
+
+<div class="col-md-6">
+  <label for="hackathons" class="form-label">hackathons</label>
+  <input type="text" class="form-control" id="hackathons" name="hackathons" pattern="^\d{1,2}(\.\d+)?$" required>
+</div>
+
+<div class="col-md-6">
+  <label for="codingrating" class="form-label">coding skills rating</label>
+  <input type="text" class="form-control" id="codingrating" name="codingrating" pattern="^\d{1,2}(\.\d+)?$" required>
+</div>
+
+<div class="col-md-6">
+  <label for="publicspeaking" class="form-label">public speaking points</label>
+  <input type="text" class="form-control" id="publicspeaking" name="publicspeaking" pattern="^\d{1,2}(\.\d+)?$" required>
+</div>
+
+
+<div class="col-md-6">
+  <label for="selflearning" class="form-label">self-learning capability?</label>
+  <select class="form-select" id="selflearning" name="selflearning" required>
+     <option value="">Select</option>
+    <option value="1">Yes</option>
+    <option value="2">No</option>
+  </select>
+</div>
+
+<div class="col-md-6">
+  <label for="extracourses" class="form-label">Extra-courses did?</label>
+  <select class="form-select" id="extracourses" name="extracourses" required>
+     <option value="">Select</option>
+    <option value="1">Yes</option>
+    <option value="2">No</option>
+  </select>
+</div>
+
   <!-- Interests -->
-  <div class="col-md-12">
-    <label for="interests" class="form-label">Interests</label>
-    <select class="form-select" id="interests" multiple required>
-      <option value="Data">Data</option>
-      <option value="AI">Artificial Intelligence</option>
-      <option value="Web_Dev">Web Development</option>
-      <option value="Finance">Finance</option>
-      <option value="Medicine">Medicine</option>
-      <option value="Law">Law / Civics</option>
-      <option value="Design">Design / Creativity</option>
-      <option value="Teaching">Teaching / Education</option>
-      <option value="Marketing">Marketing / Sales</option>
-      <option value="Cybersecurity">Cybersecurity</option>
-    </select>
-    <small class="form-text text-muted">Hold Ctrl (Windows) or Cmd (Mac) to select multiple.</small>
-  </div>
-
-  <!-- Skills -->
-  <div class="col-md-12">
-    <label for="skills" class="form-label">Skills</label>
-    <select class="form-select" id="skills" multiple required>
-      <option value="Python">Python</option>
-      <option value="Java">Java</option>
-      <option value="SQL">SQL</option>
-      <option value="ML">Machine Learning</option>
-      <option value="Excel">Excel</option>
-      <option value="Communication">Communication</option>
-      <option value="Networking">Networking</option>
-      <option value="WebDev">HTML/CSS/JS</option>
-      <option value="Writing">Writing</option>
-      <option value="Public_Speaking">Public Speaking</option>
-      <option value="Photoshop">Photoshop</option>
-    </select>
-    <small class="form-text text-muted">Hold Ctrl (Windows) or Cmd (Mac) to select multiple.</small>
-  </div>
-
-  <!-- Certifications -->
-  <div class="col-md-12">
-    <label for="certifications" class="form-label">Certifications</label>
-    <select class="form-select" id="certifications" multiple required>
-      <option value="Java">Java</option>
-      <option value="Python">Python</option>
-      <option value="AI_ML">AI / ML</option>
-      <option value="Web_Dev">Web Development</option>
-      <option value="Finance">Finance</option>
-      <option value="Ethical_Hacking">Ethical Hacking</option>
-      <option value="Public_Speaking">Public Speaking</option>
-      <option value="Graphic_Design">Graphic Design</option>
-      <option value="None">None</option>
-    </select>
-    <small class="form-text text-muted">Hold Ctrl (Windows) or Cmd (Mac) to select multiple.</small>
-  </div>
-
-  <!-- Internship Domain -->
-  <div class="col-md-12">
-    <label for="internshipDomain" class="form-label">Internship / Project Domain</label>
-    <select class="form-select" id="internshipDomain" required>
-      <option value="">Select</option>
-      <option value="IT_Firm">IT Firm</option>
-      <option value="Hospital">Hospital</option>
-      <option value="Court">Court</option>
-      <option value="NGO">NGO</option>
-      <option value="Bank">Bank</option>
-      <option value="Startup">Startup</option>
-      <option value="None">None</option>
+  <div class="col-md-6">
+    <label for="certifications" class="form-label">certifications</label>
+    <select class="form-select" id="certifications" name="certifications" required>
+       <option value="">Select</option>
+      <option value="0">None</option>
+      <option value="1">r programming</option>
+      <option value="2">information security</option>
+      <option value="3">shell programming</option>
+      <option value="4">machine learning</option>
+      <option value="5">full stack</option>
+      <option value="6">hadoop</option>
+      <option value="7">python</option>
+      <option value="8">distro making</option>
+      <option value="9">app development</option>
     </select>
   </div>
 
-  <div class="col-md-12">
-  <label for="academicStrengths" class="form-label">Academic Strengths (Subjects you excel in)</label>
-  <select class="form-select" id="academicStrengths" multiple>
-    <option value="Math">Math</option>
-    <option value="Physics">Physics</option>
-    <option value="Chemistry">Chemistry</option>
-    <option value="Biology">Biology</option>
-    <option value="Computer Science">Computer Science</option>
-    <option value="Economics">Economics</option>
-    <option value="English">English</option>
-    <option value="Business Studies">Business Studies</option>
-  </select>
-  <small class="form-text text-muted">Hold Ctrl (Windows) or Command (Mac) to select multiple.</small>
-</div>
+  <div class="col-md-6">
+    <label for="workshops" class="form-label">workshops</label>
+    <select class="form-select" id="workshops" name="workshops" required>
+       <option value="">Select</option>
+      <option value="0">None</option>
+      <option value="1">database security</option>
+      <option value="2">system designing</option>
+      <option value="3">web technologies</option>
+      <option value="4">hacking</option>
+      <option value="5">testing</option>
+      <option value="6">data science</option>
+      <option value="7">game development</option>
+      <option value="8">cloud computing</option>
+    </select>
+  </div>
 
-<div class="col-md-12">
-  <label for="personalityType" class="form-label">Personality Type</label>
-  <select class="form-select" id="personalityType">
-    <option value="">Select</option>
-    <option value="Analytical">Analytical</option>
-    <option value="Creative">Creative</option>
-    <option value="Logical">Logical</option>
-    <option value="Empathetic">Empathetic / Social</option>
-    <option value="Detail-Oriented">Detail-Oriented</option>
-    <option value="Leadership-Oriented">Leadership-Oriented</option>
+  <div class="col-md-6">
+  <label for="readingwritting" class="form-label">reading and writing skills</label>
+  <select class="form-select" id="readingwritting" name="readingwritting" required>
+     <option value="">Select</option>
+    <option value="1">excellent</option>
+    <option value="2">medium</option>
+    <option value="3">poor</option>
   </select>
 </div>
 
+<div class="col-md-6">
+  <label for="memoryscore" class="form-label">memory capability score</label>
+  <select class="form-select" id="memoryscore" name="memoryscore" required>
+     <option value="">Select</option>
+    <option value="1">excellent</option>
+    <option value="2">medium</option>
+    <option value="3">poor</option>
+  </select>
+</div>
 
+<div class="col-md-6">
+    <label for="interestsub" class="form-label">Interested subject</label>
+    <select class="form-select" id="interestsub" name="interestsub" required>
+       <option value="">Select</option>
+      <option value="0">None</option>
+      <option value="1">Software Engineering</option>
+      <option value="2">IOT</option>
+      <option value="3">cloud computing</option>
+      <option value="4">programming</option>
+      <option value="5">networks</option>
+      <option value="6">Computer Architecture</option>
+      <option value="7">data engineering</option>
+      <option value="8">hacking</option>
+      <option value="9">Management</option>
+      <option value="10">parallel computing</option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <label for="interestarea" class="form-label">interested career area</label>
+    <select class="form-select" id="interestarea" name="interestarea" required>
+       <option value="">Select</option>
+      <option value="0">None</option>
+      <option value="1">system developer</option>
+      <option value="2">security</option>
+      <option value="3">Business process analyst</option>
+      <option value="4">developer</option>
+      <option value="5">testing</option>
+      <option value="6">cloud computing</option>
+    </select>
+  </div>
+
+   <div class="col-md-6">
+    <label for="companytype" class="form-label">Type of company want to settle in?</label>
+    <select class="form-select" id="companytype" name="companytype" required>
+       <option value="">Select</option>
+      <option value="0">None</option>
+      <option value="1">Service Based</option>
+      <option value="2">Web Services</option>
+      <option value="3">BPA</option>
+      <option value="4">Testing and Maintainance Services</option>
+      <option value="5">Product based</option>
+      <option value="6">Finance</option>
+      <option value="7">Cloud Services</option>
+      <option value="8">product development</option>
+      <option value="9">Sales and Marketing</option>
+      <option value="10">SAaS services</option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+  <label for="takeninput" class="form-label">Taken inputs from seniors or elders?</label>
+  <select class="form-select" id="takeninput" name="takeninput" required>
+     <option value="">Select</option>
+    <option value="1">Yes</option>
+    <option value="2">No</option>
+  </select>
+</div>
+
+<div class="col-md-6">
+  <label for="jobtype" class="form-label">Management or Technical?</label>
+  <select class="form-select" id="jobtype" name="jobtype" required>
+     <option value="">Select</option>
+    <option value="1">Management</option>
+    <option value="2">Technical</option>
+  </select>
+</div>
+
+<div class="col-md-6">
+  <label for="workertype" class="form-label">hard/smart worker</label>
+  <select class="form-select" id="workertype" name="workertype" required>
+     <option value="">Select</option>
+    <option value="1">smart worker</option>
+    <option value="2">hard worker</option>
+  </select>
+</div>
+
+<div class="col-md-6">
+  <label for="teamwork" class="form-label">worked in teams ever?</label>
+  <select class="form-select" id="teamwork" name="teamwork" required>
+     <option value="">Select</option>
+    <option value="1">Yes</option>
+    <option value="2">No</option>
+  </select>
+</div>
+
+  
   <!-- Submit and Reset Buttons -->
   <div class="text-center">
     <button type="submit" class="btn" style="background-color: #008374; color: white;">Submit</button>
