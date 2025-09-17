@@ -140,7 +140,20 @@ def sendotp():
         # Send OTP email
         try:
             msg = Message("Your OTP Code", recipients=[email])
-            msg.body = f"Your OTP is {otp}. It will expire in 5 minutes."
+            msg.body = f"""
+Hello,
+
+We received a request to reset your account password.  
+To proceed, please use the One Time Password (OTP) provided below:
+
+🔑 Your OTP: {otp}
+
+This OTP is valid for 5 minutes only.  
+Do not share this code with anyone. If you did not request a password reset, please ignore this email or contact our support team immediately.
+
+Thank you,  
+CareerVista
+"""
             mail.send(msg)
             return render_template_string("""
                 <script>
