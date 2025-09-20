@@ -402,7 +402,7 @@ def careerpath_model_prediction():
             stream = int(request.form['streamSelect'])
             learning_style = int(request.form['learningStyle'])
             certification = int(request.form['certifications'])
-            internship_domain = int(request.form['internshipDomain'])
+            
 
             # Map streams to relevant subjects
             stream_subjects = {
@@ -423,7 +423,6 @@ def careerpath_model_prediction():
             "stream": stream,
             "learning_style": learning_style,
             "certification": certification,
-            "internship_domain": internship_domain,
             **subject_scores
             }
 

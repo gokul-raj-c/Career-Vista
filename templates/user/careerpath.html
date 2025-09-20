@@ -59,7 +59,7 @@
         fields += `
           <div class="col-md-12 mb-3">
   <label for="${subject}" class="form-label">${subject}</label>
-  <input type="text" class="form-control" name="${subject}" id="${subject}"  pattern="^\d{1,2}(\.\d+)?$" required>
+  <input type="text" class="form-control" name="${subject}" id="${subject}"  pattern="^(100|[0-9]{1,2})(\.\d+)?$" required>
 </div>
         `;
       });
@@ -242,7 +242,7 @@
     </select>
   </div>
 
-  <!-- Internship Domain -->
+  <!-- Internship Domain --
   <div class="col-md-12">
     <label for="internshipDomain" class="form-label">Internship Domain</label>
     <select class="form-select" name="internshipDomain" id="internshipDomain" required>

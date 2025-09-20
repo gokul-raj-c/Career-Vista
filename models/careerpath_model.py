@@ -6,7 +6,7 @@ model = joblib.load("models/careerpath_prediction_model.pkl")
 
 # Exact column order from training
 feature_names = [
-    "stream", "learning_style", "certification", "internship_domain",
+    "stream", "learning_style", "certification",
     "Math", "Physics", "Chemistry", "Computer_Science", "Biology", "English",
     "Accountancy", "Economics", "Business_Studies",
     "History", "Political_Science", "Psychology"
