@@ -30,6 +30,7 @@ mail = Mail(app)
 from models.academic_model import predict_result_academic
 from models.careerpath_model import predict_result_career
 from models.stream_model import predict_result_stream
+from models.jobrole_model import predict_job_role
 
 # MongoDB Atlas Connection
 client = MongoClient("mongodb+srv://gokulrajc63:epzaHzvtaYnxf4re@todo.1czrgxx.mongodb.net/?retryWrites=true&w=majority&appName=todo")
@@ -120,7 +121,7 @@ def sendotp():
     if request.method == 'POST':
         email = request.form.get('email')
 
-        # ✅ Check if email exists in DB
+        #Check if email exists in DB
         user = users_collection.find_one({"email": email})
         if not user:
             return render_template_string("""
@@ -146,7 +147,7 @@ Hello,
 We received a request to reset your account password.  
 To proceed, please use the One Time Password (OTP) provided below:
 
-🔑 Your OTP: {otp}
+Your OTP: {otp}
 
 This OTP is valid for 5 minutes only.  
 Do not share this code with anyone. If you did not request a password reset, please ignore this email or contact our support team immediately.
@@ -183,7 +184,7 @@ def verifyotp():
     if request.method == 'POST':
         entered_otp = request.form.get('OTP')
 
-        # ✅ OTP Match
+        # OTP Match
         if 'otp' in session and entered_otp == session['otp']:
             return """
                 <script>
@@ -233,10 +234,10 @@ def setnewpassword():
 
         email = session['email']
 
-        # ✅ Hash new password
+        # Hash new password
         hashed_pw = bcrypt.hashpw(newpass.encode('utf-8'), bcrypt.gensalt())
 
-        # ✅ Update MongoDB
+        # Update MongoDB
         result = users_collection.update_one(
             {"email": email},
             {"$set": {"password": hashed_pw}}
@@ -480,6 +481,58 @@ def stream_model_prediction():
             return redirect(url_for('streamselection'))
 
     return render_template('streamselection.html')
+
+
+@app.route('/jobrole-recommendation', methods=['GET', 'POST'])
+def job_role_recommendation():
+    email = session['email']
+    user = users_collection.find_one({'email': email})
+    name = user.get('name', email.split('@')[0].capitalize())
+
+    if request.method == 'POST':
+        try:
+            # Collect form data
+            databaseFundamentals = float(request.form['databaseFundamentals'])
+            ComputerArchitecture = float(request.form['ComputerArchitecture'])
+            ComputingSystems = float(request.form['ComputingSystems'])
+            CyberSecurity = float(request.form['CyberSecurity'])
+            Networking = float(request.form['Networking'])
+            SoftwareDevelopment = float(request.form['SoftwareDevelopment'])
+            ProgrammingSkills = float(request.form['ProgrammingSkills'])
+            ProjectManagement = float(request.form['ProjectManagement'])
+            ComputerFundamentals = float(request.form['ComputerFundamentals'])
+            TechnicalCommunication = float(request.form['TechnicalCommunication'])
+            AIMLRating = float(request.form['AIMLRating'])
+            SoftwareEngineering = float(request.form['SoftwareEngineering'])
+            BusinessAnalysis = float(request.form['BusinessAnalysis'])
+            Communicationskills = float(request.form['Communicationskills'])
+            DataScience = float(request.form['DataScience'])
+            Troubleshootingskills = float(request.form['Troubleshootingskills'])
+            GraphicsDesigning = float(request.form['GraphicsDesigning'])
+            
+            
+
+            # Create DataFrame for prediction
+            val_df = [
+                databaseFundamentals,ComputerArchitecture,ComputingSystems,CyberSecurity, Networking,
+                SoftwareDevelopment, ProgrammingSkills,ProjectManagement,ComputerFundamentals,TechnicalCommunication,
+                AIMLRating,SoftwareEngineering,BusinessAnalysis,Communicationskills,DataScience,Troubleshootingskills,GraphicsDesigning
+
+            ]
+
+            # Make prediction
+            prediction = predict_job_role(val_df)  # Get single value
+
+            return render_template('./user/jobrole_result.html', predicted_jobrole=prediction,email=email, name=name)
+
+        except Exception as e:
+            import traceback
+            print("ERROR:", e)
+            traceback.print_exc()
+            flash(f"Error: {str(e)}")
+            return redirect(url_for('jobrole'))
+
+    return render_template('jobrole.html')
 
 
 

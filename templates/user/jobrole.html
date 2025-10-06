@@ -196,187 +196,95 @@
               <h5 class="card-title">Form</h5>
 
               <!-- Horizontal Form -->
-             <form id="jobRoleForm" class="row g-3">
+             <form id="jobrole" class="row g-3" action="/jobrole-recommendation" method="POST">
 
 
-<div class="col-md-6">
-  <label for="logicalrating" class="form-label">Logical rating</label>
-  <input type="text" class="form-control" id="logicalrating" name="logicalrating" pattern="^\d{1,2}(\.\d+)?$" required>
-</div>
-
-<div class="col-md-6">
-  <label for="hackathons" class="form-label">hackathons</label>
-  <input type="text" class="form-control" id="hackathons" name="hackathons" pattern="^\d{1,2}(\.\d+)?$" required>
-</div>
-
-<div class="col-md-6">
-  <label for="codingrating" class="form-label">coding skills rating</label>
-  <input type="text" class="form-control" id="codingrating" name="codingrating" pattern="^\d{1,2}(\.\d+)?$" required>
-</div>
-
-<div class="col-md-6">
-  <label for="publicspeaking" class="form-label">public speaking points</label>
-  <input type="text" class="form-control" id="publicspeaking" name="publicspeaking" pattern="^\d{1,2}(\.\d+)?$" required>
-</div>
-
-
-<div class="col-md-6">
-  <label for="selflearning" class="form-label">self-learning capability?</label>
-  <select class="form-select" id="selflearning" name="selflearning" required>
-     <option value="">Select</option>
-    <option value="1">Yes</option>
-    <option value="2">No</option>
-  </select>
-</div>
-
-<div class="col-md-6">
-  <label for="extracourses" class="form-label">Extra-courses did?</label>
-  <select class="form-select" id="extracourses" name="extracourses" required>
-     <option value="">Select</option>
-    <option value="1">Yes</option>
-    <option value="2">No</option>
-  </select>
-</div>
-
-  <!-- Interests -->
-  <div class="col-md-6">
-    <label for="certifications" class="form-label">certifications</label>
-    <select class="form-select" id="certifications" name="certifications" required>
-       <option value="">Select</option>
-      <option value="0">None</option>
-      <option value="1">r programming</option>
-      <option value="2">information security</option>
-      <option value="3">shell programming</option>
-      <option value="4">machine learning</option>
-      <option value="5">full stack</option>
-      <option value="6">hadoop</option>
-      <option value="7">python</option>
-      <option value="8">distro making</option>
-      <option value="9">app development</option>
-    </select>
-  </div>
+<h4 class="mb-3">Skill Ratings (Enter numeric values Between 0 and 6)</h4>
 
   <div class="col-md-6">
-    <label for="workshops" class="form-label">workshops</label>
-    <select class="form-select" id="workshops" name="workshops" required>
-       <option value="">Select</option>
-      <option value="0">None</option>
-      <option value="1">database security</option>
-      <option value="2">system designing</option>
-      <option value="3">web technologies</option>
-      <option value="4">hacking</option>
-      <option value="5">testing</option>
-      <option value="6">data science</option>
-      <option value="7">game development</option>
-      <option value="8">cloud computing</option>
-    </select>
-  </div>
-
-  <div class="col-md-6">
-  <label for="readingwritting" class="form-label">reading and writing skills</label>
-  <select class="form-select" id="readingwritting" name="readingwritting" required>
-     <option value="">Select</option>
-    <option value="1">excellent</option>
-    <option value="2">medium</option>
-    <option value="3">poor</option>
-  </select>
-</div>
-
-<div class="col-md-6">
-  <label for="memoryscore" class="form-label">memory capability score</label>
-  <select class="form-select" id="memoryscore" name="memoryscore" required>
-     <option value="">Select</option>
-    <option value="1">excellent</option>
-    <option value="2">medium</option>
-    <option value="3">poor</option>
-  </select>
-</div>
-
-<div class="col-md-6">
-    <label for="interestsub" class="form-label">Interested subject</label>
-    <select class="form-select" id="interestsub" name="interestsub" required>
-       <option value="">Select</option>
-      <option value="0">None</option>
-      <option value="1">Software Engineering</option>
-      <option value="2">IOT</option>
-      <option value="3">cloud computing</option>
-      <option value="4">programming</option>
-      <option value="5">networks</option>
-      <option value="6">Computer Architecture</option>
-      <option value="7">data engineering</option>
-      <option value="8">hacking</option>
-      <option value="9">Management</option>
-      <option value="10">parallel computing</option>
-    </select>
-  </div>
-
-  <div class="col-md-6">
-    <label for="interestarea" class="form-label">interested career area</label>
-    <select class="form-select" id="interestarea" name="interestarea" required>
-       <option value="">Select</option>
-      <option value="0">None</option>
-      <option value="1">system developer</option>
-      <option value="2">security</option>
-      <option value="3">Business process analyst</option>
-      <option value="4">developer</option>
-      <option value="5">testing</option>
-      <option value="6">cloud computing</option>
-    </select>
+    <label for="databaseFundamentals" class="form-label">Database Fundamentals</label>
+    <input type="text" class="form-control" id="databaseFundamentals" name="databaseFundamentals" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
   </div>
 
    <div class="col-md-6">
-    <label for="companytype" class="form-label">Type of company want to settle in?</label>
-    <select class="form-select" id="companytype" name="companytype" required>
-       <option value="">Select</option>
-      <option value="0">None</option>
-      <option value="1">Service Based</option>
-      <option value="2">Web Services</option>
-      <option value="3">BPA</option>
-      <option value="4">Testing and Maintainance Services</option>
-      <option value="5">Product based</option>
-      <option value="6">Finance</option>
-      <option value="7">Cloud Services</option>
-      <option value="8">product development</option>
-      <option value="9">Sales and Marketing</option>
-      <option value="10">SAaS services</option>
-    </select>
+    <label for="ComputerArchitecture" class="form-label">Computer Architecture</label>
+    <input type="text" class="form-control" id="ComputerArchitecture" name="ComputerArchitecture" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
   </div>
 
   <div class="col-md-6">
-  <label for="takeninput" class="form-label">Taken inputs from seniors or elders?</label>
-  <select class="form-select" id="takeninput" name="takeninput" required>
-     <option value="">Select</option>
-    <option value="1">Yes</option>
-    <option value="2">No</option>
-  </select>
-</div>
+    <label for="ComputingSystems" class="form-label">Distributed Computing Systems</label>
+    <input type="text" class="form-control" id="ComputingSystems" name="ComputingSystems" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
 
-<div class="col-md-6">
-  <label for="jobtype" class="form-label">Management or Technical?</label>
-  <select class="form-select" id="jobtype" name="jobtype" required>
-     <option value="">Select</option>
-    <option value="1">Management</option>
-    <option value="2">Technical</option>
-  </select>
-</div>
+   <div class="col-md-6">
+    <label for="CyberSecurity" class="form-label">Cyber Security</label>
+    <input type="text" class="form-control" id="CyberSecurity" name="CyberSecurity" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
 
-<div class="col-md-6">
-  <label for="workertype" class="form-label">hard/smart worker</label>
-  <select class="form-select" id="workertype" name="workertype" required>
-     <option value="">Select</option>
-    <option value="1">smart worker</option>
-    <option value="2">hard worker</option>
-  </select>
-</div>
+   <div class="col-md-6">
+    <label for="Networking" class="form-label">Networking</label>
+    <input type="text" class="form-control" id="Networking" name="Networking" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
 
-<div class="col-md-6">
-  <label for="teamwork" class="form-label">worked in teams ever?</label>
-  <select class="form-select" id="teamwork" name="teamwork" required>
-     <option value="">Select</option>
-    <option value="1">Yes</option>
-    <option value="2">No</option>
-  </select>
-</div>
+   <div class="col-md-6">
+    <label for="SoftwareDevelopment" class="form-label">Software Development</label>
+    <input type="text" class="form-control" id="SoftwareDevelopment" name="SoftwareDevelopment" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="ProgrammingSkills" class="form-label">Programming Skills</label>
+    <input type="text" class="form-control" id="ProgrammingSkills" name="ProgrammingSkills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="ProjectManagement" class="form-label">Project Management</label>
+    <input type="text" class="form-control" id="ProjectManagement" name="ProjectManagement" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="ComputerFundamentals" class="form-label">Computer Forensics Fundamentals</label>
+    <input type="text" class="form-control" id="ComputerFundamentals" name="ComputerFundamentals" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="TechnicalCommunication" class="form-label">Technical Communication</label>
+    <input type="text" class="form-control" id="TechnicalCommunication" name="TechnicalCommunication" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="AIMLRating" class="form-label">AI ML</label>
+    <input type="text" class="form-control" id="AIMLRating" name="AIMLRating" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="SoftwareEngineering" class="form-label">Software Engineering</label>
+    <input type="text" class="form-control" id="SoftwareEngineering" name="SoftwareEngineering" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="BusinessAnalysis" class="form-label">Business Analysis</label>
+    <input type="text" class="form-control" id="BusinessAnalysis" name="BusinessAnalysis" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="Communicationskills" class="form-label">Communication skills</label>
+    <input type="text" class="form-control" id="Communicationskills" name="Communicationskills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="DataScience" class="form-label">Data Science</label>
+    <input type="text" class="form-control" id="DataScience" name="DataScience" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="Troubleshootingskills" class="form-label">Troubleshooting skills</label>
+    <input type="text" class="form-control" id="Troubleshootingskills" name="Troubleshootingskills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="GraphicsDesigning" class="form-label">Graphics Designing</label>
+    <input type="text" class="form-control" id="GraphicsDesigning" name="GraphicsDesigning" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+  </div>
 
   
   <!-- Submit and Reset Buttons -->
