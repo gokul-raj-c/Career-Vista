@@ -199,92 +199,261 @@
              <form id="jobrole" class="row g-3" action="/jobrole-recommendation" method="POST">
 
 
-<h4 class="mb-3">Skill Ratings (Enter numeric values Between 0 and 6)</h4>
+<h4 class="mb-3">Skill Ratings</h4>
 
   <div class="col-md-6">
     <label for="databaseFundamentals" class="form-label">Database Fundamentals</label>
-    <input type="text" class="form-control" id="databaseFundamentals" name="databaseFundamentals" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+    <select class="form-select" id="databaseFundamentals" name="databaseFundamentals" required>
+      <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
 
    <div class="col-md-6">
     <label for="ComputerArchitecture" class="form-label">Computer Architecture</label>
-    <input type="text" class="form-control" id="ComputerArchitecture" name="ComputerArchitecture" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="ComputerArchitecture" name="ComputerArchitecture"  required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="ComputingSystems" class="form-label">Distributed Computing Systems</label>
-    <input type="text" class="form-control" id="ComputingSystems" name="ComputingSystems" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="ComputingSystems" name="ComputingSystems" required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="CyberSecurity" class="form-label">Cyber Security</label>
-    <input type="text" class="form-control" id="CyberSecurity" name="CyberSecurity" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="CyberSecurity" name="CyberSecurity"   required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="Networking" class="form-label">Networking</label>
-    <input type="text" class="form-control" id="Networking" name="Networking" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="Networking" name="Networking"  required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="SoftwareDevelopment" class="form-label">Software Development</label>
-    <input type="text" class="form-control" id="SoftwareDevelopment" name="SoftwareDevelopment" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="SoftwareDevelopment" name="SoftwareDevelopment"  required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="ProgrammingSkills" class="form-label">Programming Skills</label>
-    <input type="text" class="form-control" id="ProgrammingSkills" name="ProgrammingSkills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="ProgrammingSkills" name="ProgrammingSkills" required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="ProjectManagement" class="form-label">Project Management</label>
-    <input type="text" class="form-control" id="ProjectManagement" name="ProjectManagement" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="ProjectManagement" name="ProjectManagement"  required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="ComputerFundamentals" class="form-label">Computer Forensics Fundamentals</label>
-    <input type="text" class="form-control" id="ComputerFundamentals" name="ComputerFundamentals" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="ComputerFundamentals" name="ComputerFundamentals" required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="TechnicalCommunication" class="form-label">Technical Communication</label>
-    <input type="text" class="form-control" id="TechnicalCommunication" name="TechnicalCommunication" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="TechnicalCommunication" name="TechnicalCommunication" required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="AIMLRating" class="form-label">AI ML</label>
-    <input type="text" class="form-control" id="AIMLRating" name="AIMLRating" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="AIMLRating" name="AIMLRating"  required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="SoftwareEngineering" class="form-label">Software Engineering</label>
-    <input type="text" class="form-control" id="SoftwareEngineering" name="SoftwareEngineering" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="SoftwareEngineering" name="SoftwareEngineering" required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="BusinessAnalysis" class="form-label">Business Analysis</label>
-    <input type="text" class="form-control" id="BusinessAnalysis" name="BusinessAnalysis" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="BusinessAnalysis" name="BusinessAnalysis" required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="Communicationskills" class="form-label">Communication skills</label>
-    <input type="text" class="form-control" id="Communicationskills" name="Communicationskills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+    <select class="form-select" id="Communicationskills" name="Communicationskills" required>
+  <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="DataScience" class="form-label">Data Science</label>
-    <input type="text" class="form-control" id="DataScience" name="DataScience" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="DataScience" name="DataScience" required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
    <div class="col-md-6">
     <label for="Troubleshootingskills" class="form-label">Troubleshooting skills</label>
-    <input type="text" class="form-control" id="Troubleshootingskills" name="Troubleshootingskills" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="Troubleshootingskills" name="Troubleshootingskills"  required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   <div class="col-md-6">
     <label for="GraphicsDesigning" class="form-label">Graphics Designing</label>
-    <input type="text" class="form-control" id="GraphicsDesigning" name="GraphicsDesigning" pattern="^(?:[0-5](?:\.\d+)?|6(?:\.0+)?)$"  required>
+     <select class="form-select" id="GraphicsDesigning" name="GraphicsDesigning" required>
+ <option value="">Select</option>
+      <option value="0">Very Poor</option>
+      <option value="1">Poor</option>
+      <option value="2">Below Average</option>
+      <option value="3">Average</option>
+      <option value="4">Good</option>
+      <option value="5">Very Good</option>
+      <option value="6">Excellent</option>
+    </select>  
   </div>
+
 
   
   <!-- Submit and Reset Buttons -->
