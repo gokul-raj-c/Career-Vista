@@ -83,8 +83,11 @@ CareerVista uses a structured dataset containing:
 You can download the dataset from the following GitHub folder:
 
 🔗 **Stream Prediction:** [[Dataset]](https://raw.githubusercontent.com/gokul-raj-c/datasets/refs/heads/main/stream_dataset.csv)
+
 🔗 **Career Path Prediction:** [[Dataset]](https://raw.githubusercontent.com/gokul-raj-c/datasets/refs/heads/main/balanced_career_prediction_dataset.csv)  
+
 🔗 **Academic Recommendation:** [Dataset](https://raw.githubusercontent.com/gokul-raj-c/datasets/refs/heads/main/StudentPerformanceFactors.csv)
+
 🔗 **Job Role Prediction:** [[Dataset]](https://raw.githubusercontent.com/gokul-raj-c/datasets/refs/heads/main/CareerMapping.csv)  
 
 
@@ -120,4 +123,5 @@ Predicts the most suitable job role for the student.
 
 **Algorithm Used:**
 - **Random Forest Classifier**
+
 
