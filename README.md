@@ -50,7 +50,6 @@ Recommends broad career fields, such as:
 Provides:
 - **Academic performance % evaluation** to assess academic standing and readiness for future goals  
 
----
 
 ### **4️⃣ Job Role Prediction Module**
 Predicts specific job profiles such as:
@@ -121,3 +120,4 @@ Predicts the most suitable job role for the student.
 
 **Algorithm Used:**
 - **Random Forest Classifier**
+
