@@ -68,10 +68,11 @@ Predicts specific job profiles such as:
 | Category          | Tools & Technologies                             |
 |-------------------|--------------------------------------------------|
 | Programming       | Python                                           |
-| ML Frameworks     | Scikit-learn, TensorFlow / PyTorch (optional)   |
+| ML Frameworks     | Scikit-learn, TensorFlow                         |
 | Data Processing   | NumPy, Pandas                                    |
 | Visualization     | Matplotlib, Seaborn                              |
 | Web Framework     | Flask                                            |
+| Database          | MongoDB                                          |
 
 
 ## 📊 Dataset
@@ -123,5 +124,6 @@ Predicts the most suitable job role for the student.
 
 **Algorithm Used:**
 - **Random Forest Classifier**
+
 
 
