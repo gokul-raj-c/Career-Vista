@@ -6,3 +6,5 @@ pymongo
 pandas
 flask-mail
 scikit-learn
+gunicorn
+dnspython

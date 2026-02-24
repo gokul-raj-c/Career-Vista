@@ -12,15 +12,16 @@ import random
 
 app = Flask(__name__)
 CORS(app)
-app.secret_key = 'goookul'
+import os
+app.secret_key = os.environ.get("SECRET_KEY")
 
 
 # Flask-Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = "teamgarage4web@gmail.com"    
-app.config['MAIL_PASSWORD'] = "tptnqdqdzmojldoe"        
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")      
 app.config['MAIL_DEFAULT_SENDER'] = "your_email@gmail.com"
 
 mail = Mail(app)
@@ -33,7 +34,7 @@ from models.stream_model import predict_result_stream
 from models.jobrole_model import predict_job_role
 
 # MongoDB Atlas Connection
-client = MongoClient("mongodb+srv://gokulrajc63:epzaHzvtaYnxf4re@todo.1czrgxx.mongodb.net/?retryWrites=true&w=majority&appName=todo")
+client = MongoClient(os.environ.get("MONGO_URI"))
 db = client["career-vista"]
 users_collection = db["registration"]
 
@@ -536,5 +537,6 @@ def job_role_recommendation():
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
