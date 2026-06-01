@@ -10,18 +10,23 @@ import joblib
 from flask_mail import Mail, Message
 import random
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 app = Flask(__name__)
 CORS(app)
-app.secret_key = 'goookul'
+app.secret_key = os.getenv("SECRET_KEY")
 
 
 # Flask-Mail Configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = "teamgarage4web@gmail.com"    
-app.config['MAIL_PASSWORD'] = "tptnqdqdzmojldoe"        
-app.config['MAIL_DEFAULT_SENDER'] = "your_email@gmail.com"
+app.config['MAIL_SERVER'] = os.getenv("MAIL_SERVER")
+app.config['MAIL_PORT'] = int(os.getenv("MAIL_PORT"))
+app.config['MAIL_USE_TLS'] = os.getenv("MAIL_USE_TLS") == "True"
+app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
@@ -33,7 +38,7 @@ from models.stream_model import predict_result_stream
 from models.jobrole_model import predict_job_role
 
 # MongoDB Atlas Connection
-client = MongoClient("mongodb+srv://gokulrajc63:epzaHzvtaYnxf4re@todo.1czrgxx.mongodb.net/?retryWrites=true&w=majority&appName=todo")
+client = MongoClient(os.getenv("MONGO_URI"))
 db = client["career-vista"]
 users_collection = db["registration"]
 
